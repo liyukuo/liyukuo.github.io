@@ -299,7 +299,7 @@
 
 	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
 		<time datetime="2019-08-12T05:18:31.000Z" itemprop="dateUpdated">
-	  		2019-09-05
+	  		2019-09-09
 	  </time>
 	</a> 
 
@@ -308,7 +308,13 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/Docker/" class=" ">
+			Docker
+		</a>
+	
+		
 		</span>
 		
 		
@@ -334,46 +340,43 @@
 
 	<div class="article-content" id="article-content">
 		<p>基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）<br>首页 - Mac &amp; Linux /2019-09-04<br>    我们知道，Redis的集群方案大致有三种：1）redis cluster集群方案；2）master/slave主从方案；3）哨兵模式来进行主从替换以及故障恢复。</p>
-<pre><code>sentinel系统可以监视一个或者多个redis master服务，以及这些master服务的所有从服务；当某个master服务下线时，自动将该master下的某个从服务升级为master服务替代已下线的master服务继续处理请求。
-
-
-
-同样，我们使用docker进行搭建
+<pre><code>sentinel系统可以监视一个或者多个redis master服务，以及这些master服务的所有从服务；当某个master服务下线时，自动将该master下的某个从服务升级为master服务替代已下线的master服务继续处理请求。</code></pre><p>​    </p>
+<pre><code>同样，我们使用docker进行搭建
 
 新建一个mkdir redis-sentinel文件夹
 
 进入项目文件夹 cd redis-sentinel，再建立一个sentinel专门来存放哨兵脚本，然后cd sentinel
 
-建立sentinel.conf配置文件：
-
-
-
-sentinel monitor mymaster redis-master 6379 2
+建立sentinel.conf配置文件：</code></pre><p>​    </p>
+<pre><code>sentinel monitor mymaster redis-master 6379 2
 sentinel down-after-milliseconds mymaster 5000
 sentinel parallel-syncs mymaster 1
 sentinel failover-timeout mymaster 5000
 该配置的意思是，监控主服务器的6379端口并且起两个实例，如果哨兵5s内没有收到主节点的心跳，哨兵就认为主节点宕机了，默认是30秒，如果5秒以上连接不上主库同步，则在5秒后进行选举，对其他的从服务器进行角色转换
 
 
-随后，建立sentinel-entrypoint.sh脚本文件：</code></pre><p>  #!/bin/sh</p>
+随后，建立sentinel-entrypoint.sh脚本文件：</code></pre><p>​    </p>
+<p>  #!/bin/sh</p>
 <p>  sed -i “s/$SENTINEL_QUORUM/$SENTINEL_QUORUM/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_DOWN_AFTER/$SENTINEL_DOWN_AFTER/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_FAILOVER/$SENTINEL_FAILOVER/g” /etc/redis/sentinel.conf</p>
 <p>  exec docker-entrypoint.sh redis-server /etc/redis/sentinel.conf –sentinel<br>      该脚本文件会对配置文件进行同步，用来启动哨兵</p>
-<pre><code>然后我们来建立Dockerfile指定基础镜像，同时拷贝配置文件到镜像内部：</code></pre><p>  FROM redis</p>
+<pre><code>然后我们来建立Dockerfile指定基础镜像，同时拷贝配置文件到镜像内部：</code></pre><p>​      </p>
+<p>  FROM redis</p>
 <p>  EXPOSE 26379<br>  ADD sentinel.conf /etc/redis/sentinel.conf<br>  RUN chown redis:redis /etc/redis/sentinel.conf<br>  COPY sentinel-entrypoint.sh /usr/local/bin/<br>  RUN chmod +x /usr/local/bin/sentinel-entrypoint.sh<br>  ENTRYPOINT [“sentinel-entrypoint.sh”]<br>      最后退到项目根目录 cd ..</p>
-<pre><code>建立docker-compose.yml配置文件：</code></pre><p>master:<br>  image: redis<br>  ports:<br>    - “6379:6379”<br>slave1:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6380:6379”<br>slave2:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6381:6379”<br>sentinel1:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave1<br>sentinel2:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave2<br>    意思是，我们起三台redis服务，分别跑在6379,6380,6381 ，一主两从，并且有两个哨兵实例来监控他们，最后项目结构是这样的</p>
-<pre><code>在项目根目录下，启动服务：</code></pre><p>docker-compose up –force-recreate<br>    如果希望在后台运行可以加-d参数</p>
+<pre><code>建立docker-compose.yml配置文件：</code></pre><p>​    </p>
+<p>master:<br>  image: redis<br>  ports:<br>    - “6379:6379”<br>slave1:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6380:6379”<br>slave2:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6381:6379”<br>sentinel1:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave1<br>sentinel2:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave2<br>    意思是，我们起三台redis服务，分别跑在6379,6380,6381 ，一主两从，并且有两个哨兵实例来监控他们，最后项目结构是这样的</p>
+<p>​    </p>
+<pre><code>在项目根目录下，启动服务：</code></pre><p>​    </p>
+<p>docker-compose up –force-recreate<br>    如果希望在后台运行可以加-d参数</p>
 <pre><code>此时我们可以测一下同步是否成功，分别开三个窗口登录到redis,redis-cli -p 6379,redis-cli -p 6380,redis-cli -p 6381
 
 在主库6379中set 123 123，然后分别在从库get 123
 
     没有问题，现在我们来测一下哨兵模式是否好用，如果主库由于某种原因宕机了，从库是否能自动切换角色
 
-我们可以手动停止主库的容器进程，来模拟宕机的情况</code></pre><p>docker stop redissentinel_master_1</p>
-<pre><code>此时主库已经连接不上了，我们进入从库，使用info命令来查看从库的角色
-
-
-
-发现之前6380本来是从库(slave)角色，现在已经变成主库了(master)了
+我们可以手动停止主库的容器进程，来模拟宕机的情况</code></pre><p>​    </p>
+<p>docker stop redissentinel_master_1</p>
+<pre><code>此时主库已经连接不上了，我们进入从库，使用info命令来查看从库的角色</code></pre><p>​    </p>
+<pre><code>发现之前6380本来是从库(slave)角色，现在已经变成主库了(master)了
 
 
 其实这就是所谓的高负载高可用架构，在使用集群承担高负载的同时，也能进行高可用的容灾机制。</code></pre>	
@@ -420,6 +423,30 @@ sentinel failover-timeout mymaster 5000
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
+								利用Docker来搭建分布式文件系统FastDfs			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
+实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/09/09/简历/" title="个人简历">
 								个人简历			
 							</a>
@@ -428,10 +455,10 @@ sentinel failover-timeout mymaster 5000
 								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								​      个人简介
+								​               个人简介
 个人信息
- 姓   名：李宇阔                         毕业院校：河北省石家庄学院
-民   族：汉                             主修课程：计算机与网络技术（本...
+ 姓   名：李宇阔                             毕业院校：河北省石家庄学院
+民   族：汉                               ...
 							</p>
 						</div>
 
@@ -439,29 +466,6 @@ sentinel failover-timeout mymaster 5000
 							<a href="/2019/09/09/简历/" title="个人简历">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="个人简历"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/06/Mootor结合mongo的使用/" title="Mootor结合mongo的使用">
-								Mootor结合mongo的使用			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 6日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/06/Mootor结合mongo的使用/" title="Mootor结合mongo的使用">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Mootor结合mongo的使用"/>
 							</a>
 						</div>
 					</li>											
@@ -510,53 +514,6 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/09/03/hello-world/" title="Hello World">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/30/python标准库/" title="python标准库">
-								python标准库			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 30日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/30/python标准库/" title="python标准库">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="python标准库"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
-								利用Docker来搭建分布式文件系统FastDfs			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 28日, 2019				
-							</p>
-							<p class="relate-post-content">
-								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
-实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
 							</a>
 						</div>
 					</li>											
@@ -654,6 +611,56 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/08/12/nginx和uwsgi的区别和作用：/" title="nginx和uwsgi的区别和作用：">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="nginx和uwsgi的区别和作用："/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/linux 安装uwsgi/" title="linux 安装uwsgi">
+								linux 安装uwsgi			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								linux 安装uwsgi安装并查看版本• yum groupinstall “Development tools”• yum install zlib-devel bzip2-devel pcre-devel openssl-dev...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/linux 安装uwsgi/" title="linux 安装uwsgi">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="linux 安装uwsgi"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/高阶函数/" title="高阶函数">
+								高阶函数			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+在Python中，变量可以指向函数，函数名也是变量 既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。
+
+常用高阶函数： • map()：地图
+○ 语法：map(func...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/高阶函数/" title="高阶函数">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="高阶函数"/>
 							</a>
 						</div>
 					</li>											

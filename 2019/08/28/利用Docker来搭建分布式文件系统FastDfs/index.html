@@ -299,7 +299,7 @@
 
 	<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" itemprop="url">
 		<time datetime="2019-08-28T02:08:20.000Z" itemprop="dateUpdated">
-	  		2019-08-28
+	  		2019-09-09
 	  </time>
 	</a> 
 
@@ -308,7 +308,13 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/Docker/" class=" ">
+			Docker
+		</a>
+	
+		
 		</span>
 		
 		
@@ -338,19 +344,14 @@
 
     FastDFS是一个开源的分布式文件系统，它对文件进行管理，功能包括：文件存储、文件同步、文件访问（文件上传、文件下载）等，解决了大容量存储和负载均衡的问题。特别适合以文件为载体的在线服务，如相册网站、视频网站等等。可以说它就是为互联网而生，为大数据而生的。
 
-FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storage）。跟踪器主要做调度工作，在访问上起负载均衡的作用。 存储节点存储文件，完成文件管理的所有功能：存储、同步和提供存取接口，FastDFS同时对文件的meta data进行管理。跟踪器和存储节点都可以由多台服务器构成。跟踪器和存储节点中的服务器均可以随时增加或下线而不会影响线上服务。其中跟踪器中的所有服务器都是对等的，可以根据服务器的压力情况随时增加或减少。
-
-
-
-说人话，为啥要用FastDfs:
+FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storage）。跟踪器主要做调度工作，在访问上起负载均衡的作用。 存储节点存储文件，完成文件管理的所有功能：存储、同步和提供存取接口，FastDFS同时对文件的meta data进行管理。跟踪器和存储节点都可以由多台服务器构成。跟踪器和存储节点中的服务器均可以随时增加或下线而不会影响线上服务。其中跟踪器中的所有服务器都是对等的，可以根据服务器的压力情况随时增加或减少。</code></pre><p>​    </p>
+<pre><code>说人话，为啥要用FastDfs:
 
 1 解决海量存储，同时存储容量扩展方便。
 2 解决文件内容重复,如果用户上传的文件重复(文件指纹一样)，那么系统只有存储一份数据，值得一提的是，这项技术目前被广泛应用在网盘中。
-3 结合Nginx提高网站读取图片的效率。
-
-
-
-如果我们从头搭建fastdfs服务器那么就太low了，网上有大把的docker镜像供你选择，所以又到了利用docker优越性的时候了，首先下载fastdfs镜像</code></pre><p>docker pull delron/fastdfs</p>
+3 结合Nginx提高网站读取图片的效率。</code></pre><p>​    </p>
+<pre><code>如果我们从头搭建fastdfs服务器那么就太low了，网上有大把的docker镜像供你选择，所以又到了利用docker优越性的时候了，首先下载fastdfs镜像</code></pre><p>​    </p>
+<p>docker pull delron/fastdfs</p>
 <p>区区四百多兆就承载了nginx和fastdfs服务</p>
 <p>然后使用docker镜像构建tracker容器（跟踪服务器，起到调度的作用），这里tracker服务将会自动映射到宿主机上</p>
 <p>docker run -d –network=host –name tracker -v /root:/var/root delron/fastdfs tracker</p>
@@ -382,7 +383,7 @@ FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storag
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/30/python标准库/" title="python标准库" rel="prev">
+			<a href="/2019/09/03/hello-world/" title="Hello World" rel="prev">
 				&laquo;上一篇
 			</a>
 		
@@ -408,6 +409,29 @@ FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storag
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）首页 - Mac &amp; Linux /2019-09-04    我们知道，Redis的集群方案大致有三种：1）redis clu...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/09/09/简历/" title="个人简历">
 								个人简历			
 							</a>
@@ -416,10 +440,10 @@ FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storag
 								九月 9日, 2019				
 							</p>
 							<p class="relate-post-content">
-								​      个人简介
+								​               个人简介
 个人信息
- 姓   名：李宇阔                         毕业院校：河北省石家庄学院
-民   族：汉                             主修课程：计算机与网络技术（本...
+ 姓   名：李宇阔                             毕业院校：河北省石家庄学院
+民   族：汉                               ...
 							</p>
 						</div>
 
@@ -427,29 +451,6 @@ FastDFS服务端有两个角色：跟踪器（tracker）和存储节点（storag
 							<a href="/2019/09/09/简历/" title="个人简历">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="个人简历"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/06/Mootor结合mongo的使用/" title="Mootor结合mongo的使用">
-								Mootor结合mongo的使用			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 6日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/06/Mootor结合mongo的使用/" title="Mootor结合mongo的使用">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Mootor结合mongo的使用"/>
 							</a>
 						</div>
 					</li>											
@@ -498,29 +499,6 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/09/03/hello-world/" title="Hello World">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/30/python标准库/" title="python标准库">
-								python标准库			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 30日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/30/python标准库/" title="python标准库">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="python标准库"/>
 							</a>
 						</div>
 					</li>											
@@ -641,6 +619,33 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/08/12/linux 安装uwsgi/" title="linux 安装uwsgi">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="linux 安装uwsgi"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/高阶函数/" title="高阶函数">
+								高阶函数			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+在Python中，变量可以指向函数，函数名也是变量 既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。
+
+常用高阶函数： • map()：地图
+○ 语法：map(func...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/高阶函数/" title="高阶函数">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="高阶函数"/>
 							</a>
 						</div>
 					</li>											
