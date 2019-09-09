@@ -299,7 +299,7 @@
 
 	<a href="/2019/08/12/linux 安装uwsgi/" itemprop="url">
 		<time datetime="2019-08-12T05:19:45.000Z" itemprop="dateUpdated">
-	  		2019-08-12
+	  		2019-09-09
 	  </time>
 	</a> 
 
@@ -341,7 +341,7 @@
 <p>def application(env, start_response):<br>   start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])<br>   return [b”Hello uwsgi!”]<br>• uwsgi运行该文件</p>
 <p>uwsgi –http-socket :8088 –wsgi-file test.py<br>• 设置uwsig.ini 启动<br>• 测试uwsgi，创建test.py</p>
 <p>def application(env, start_response):<br>   start_response(‘200 OK’, [(‘Content-Type’,’text/html’)])<br>   return [b”Hello uwsgi!”]<br>• 任意地方创建uwsgi.ini，内容如下：</p>
-<p>[uwsgi]<br>http-socket= :8088<br>chdir=/home/xlf<br>wsgi-file=test.py<br>下面是文件内配置文件的内容：<br>文件里面的字段意思:<br>• socket ：指定项目执行的端口号<br>• 用nginx的时候就配socket , 直接运行的时候配 http<br>• chadir :指定项目的目录<br>• module ：可以这么来理解，对于- myweb_uwsgi.ini文件来说，与它的平级的有一个partner目录，这个目录下有一个wsgi.py文件<br>• master :允许主线程存在（true）<br>• processes:开启的进程数量（这里是开启4个进程）<br>• vacuum :当服务器退出的时候自动清理环境，删除unix socket文件和pid文件<br>• 原文：<a href="https://www.jianshu.com/p/f3fd1f831729" target="_blank" rel="noopener">https://www.jianshu.com/p/f3fd1f831729</a><br>• 到uwsgi.ini目录下<br>执行 uwsgi –ini ./uwsgi.ini</p>
+<p>[uwsgi]<br>http-socket= :8088<br>chdir=/home/xlf<br>wsgi-file=test.py<br>下面是文件内配置文件的内容：<br>文件里面的字段意思:<br>• socket ：指定项目执行的端口号<br>• 用nginx的时候就配socket , 直接运行的时候配 http<br>• chadir :指定项目的目录<br>• module ：可以这么来理解，对于- myweb_uwsgi.ini文件来说，与它的平级的有一个partner目录，这个目录下有一个wsgi.py文件<br>• master :允许主线程存在（true）<br>• processes:开启的进程数量（这里是开启4个进程）<br>• vacuum :当服务器退出的时候自动清理环境，删除unix socket文件和pid文件<br>• 到uwsgi.ini目录下<br>执行 uwsgi –ini ./uwsgi.ini</p>
 	
 	</div>
 	
@@ -430,29 +430,6 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/09/05/Django/" title="Django简介">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Django简介"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/03/hello-world/" title="Hello World">
-								Hello World			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 3日, 2019				
-							</p>
-							<p class="relate-post-content">
-								Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using ...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/03/hello-world/" title="Hello World">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Hello World"/>
 							</a>
 						</div>
 					</li>											
@@ -624,6 +601,30 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/08/12/NumPy基本方法/" title="NumPy基本方法">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="NumPy基本方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/JupyterLab简介及快捷键/" title="JupyterLab简介及快捷键">
+								JupyterLab简介及快捷键			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								Jupyter labJupyter Notebook 有两种键盘输入模式。编辑模式，允许你往单元中键入代码或文本；这时的单元框线是绿色的。命令模式，键盘输入运行程序命令；这时的单元框线是灰色。
+命令模式 (按键 Esc 开启)Ent...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/JupyterLab简介及快捷键/" title="JupyterLab简介及快捷键">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="JupyterLab简介及快捷键"/>
 							</a>
 						</div>
 					</li>											
