@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Vue | LiYukuo
+      Vue-路由组件 | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Vue》
+			当前文章&nbsp;:&nbsp;《Vue-路由组件》
 		
 	</p>
 
@@ -266,7 +266,7 @@
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
 	<a href="/2019/09/09/Vue/" itemprop="url">
-		Vue
+		Vue-路由组件
 	</a>
 
 	</div>
@@ -299,7 +299,7 @@
 
 	<a href="/2019/09/09/Vue/" itemprop="url">
 		<time datetime="2019-09-09T09:00:28.000Z" itemprop="dateUpdated">
-	  		2019-09-09
+	  		2019-09-10
 	  </time>
 	</a> 
 
@@ -308,13 +308,19 @@
 		</span>
 		<span>
 			<i class="fa fa-tags"></i>
-					
+			
+	
+		<a href="/tags/Vue/" class=" ">
+			Vue
+		</a>
+	
+		
 		</span>
 		
 		
 
 	
-    <span class="leancloud_visitors" id="/2019/09/09/Vue/_visitors" data-url="/2019/09/09/Vue/" data-title="Vue">
+    <span class="leancloud_visitors" id="/2019/09/09/Vue/_visitors" data-url="/2019/09/09/Vue/" data-title="Vue-路由组件">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -324,7 +330,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2019/09/09/Vue/_likes" data-url="/2019/09/09/Vue/" data-title="Vue" rel="unlike">
+    <span class="leancloud_likes" id="/2019/09/09/Vue/_likes" data-url="/2019/09/09/Vue/" data-title="Vue-路由组件" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -333,7 +339,40 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-			
+		<p>Vue-Router<br>Vue-router做路径匹配时支持动态片段、全匹配片段以及查询参数（片段指的是URL中的一部分）</p>
+<p>对于解析过的路由，这些信息都可以通过路由上下文对象（从现在起，我们会称其为路由对象）访问。</p>
+<p>在使用了vue-router的应用中，路由对象会被注入每个组件中，赋值为this.$route，并且当路由切换时，路由对象会被更新</p>
+<p>Vue的两种模式<br>一般单页面应用是(SPA)不会请求页面而是只更新视图</p>
+<p>vue-router提供了两种方式来实现前端路由：Hash模式和History模式,可以用mode参数来决定使用哪一种方式</p>
+<p>export default new Router({<br>  mode: ‘history’,<br>  …<br>})<br>hash模式：vue-router默认使用Hash模式，使用 url的hash来模拟一个完整的url；此时url变化时，浏览器是不会重新加载的；Hash(即#)是url的锚点，代表的是网页中的一个位置，仅仅改变#后面部分，浏览器只会滚动对应的位置，而不会重新加载页面。#仅仅只是对浏览器进行指导，而对服务端是完全没有作用的！它不会被包括在http请求中，故也不会重新加载页面。同时hash发生变化时，url都会被浏览器记录下来，这样你就可以使用浏览器的后退了</p>
+<p>History模式：如果你不喜欢hash这种#样式，可以使用history模式。这种模式利用了HTML5 History新增的pushState()和replaceState()方法。除了之前的back，forward，go方法；这两个新方法可以应用在浏览器历史记录的增加替换功能上。使用History模式，通过历史记录修改url。但它不会立即向后端发送请求。</p>
+<p>注意：虽然History模式可以丢掉不美观的#，也可以正常的前进后退，但是刷新f5后，此时浏览器就会访问服务器，在没有后台支持的情况下，此时就会得到一个404！</p>
+<p>官方文档给出的描述是：不过这种模式要玩好；还需要后台配置支持</p>
+<p>因为我们的应用是单个客户端应用，如果后台没有正确的配置，当用户直接访问时,就会返回404，所以，要在服务端增加一个覆盖所有情况的的候选资源。如果url匹配不到任何静态资源；则应该返回同一个index.html页面</p>
+<p>路由属性<br>路由对象this.$route支持属性</p>
+<p>$route.path：字符串，等于当前路由对象的路径，会被解析为绝对路径<br>/aaa/bbb<br>$route.params：包含路由中的动态片段和全匹配片段的键值对<br>$route.query：获取连接中查询参数的键值对<br>/foo?user=1<br>// 可以获取到<br>$route.query.user == 1<br>$route.router：路由规则所属的路由器以及其所属的组件<br>$route.matched：数组，包含当前匹配的路径中所包含的所有片段所对应的配置参数对象<br>$route.name：当前路径的名字<br>路由中设置自定义参数</p>
+<p>router.map({<br>  ‘/a’: {<br>    component: { … },<br>    auth: true // 这里 auth 是一个自定义字段<br>  }<br>})<br>当 /a 被匹配时，$route.auth 的值将会是 true。我们可以利用这个特性在全局的钩子函数中进行身份验证<br>router.beforeEach(function (transition) {<br>  if (transition.to.auth) {<br>    // 对用户身份进行验证…<br>  }<br>})<br>动态路由（:号通配符）<br>路由中的动态片段使用以冒号开头的路径片段定义</p>
+<p>类比django中的路由传参</p>
+<p>path(‘<a href="int:name" target="_blank" rel="noopener">int:name</a>/‘,views.xx),<br>path: ‘/user/:username’,<br>component: {<br>    template: ‘</p><p>用户名是</p>‘<br>}<br>一条路径中可以包含多个动态片段，每个片段都会被解析成 $route.params 的一个键值对<p></p>
+<p>解析模式<br>模式    匹配的路径    $route.params<br>/user/:username    /user/evan    { username: ‘evan’ }<br>/user/:username/post/:post_id    /user/evan/post/123    { username: ‘evan’, post_id: 123 }<br>全匹配路由（*号通配符）<br>动态片段只能匹配路径中的一个部分，而全匹配片段则基本类似于它的贪心版</p>
+<p>例如 /foo/*bar 会匹配任何以 /foo/ 开头的路径</p>
+<p>当使用一个通配符时，$route.params内会自动添加一个名为pathMatch的参数，其中包含了在连接中通过通配符所匹配到的部分</p>
+<p>{<br>    path: ‘/user/<em>/cc’,<br>    name: ‘User’,<br>    component: User,<br>},<br>访问的URL如下<br><a href="http://127.0.0.1:8080/user/1231/aaa/cc" target="_blank" rel="noopener">http://127.0.0.1:8080/user/1231/aaa/cc</a><br>那么此时</em>通配符拿到的部分为<br>{ “pathMatch”: “1231/aaa” }<br>具名路径（命名路由）<br>类似django的路由命名，vue路由映射中也可以为某一个路由通过name属性设置命名<br>{<br>    path: ‘/user/:userid’,<br>    name: ‘User’,<br>    component: User,<br>},<br>在使用v-link标签进行路由跳转时，就可以更加方便啦<br><router-link :to="{name: 'User', params: {userid: 'zhangsan' }}">user</router-link><br>也可以在js代码中使用router.go切换到该路径下<br>router.go({ name: ‘user’, params: { userId: 123 }})<br>V-link<br>v-link 是一个用来让用户在vue-router应用的不同路径间跳转的指令。该指令接受一个JavaScript表达式，并会在用户点击元素时用该表达式的值去调用 router.go</p>
+<!-- 字面量路径 -->
+<p><a v-link="'home'">Home</a></p>
+<!-- 效果同上 -->
+<p><a v-link="{ path: 'home' }">Home</a></p>
+<!-- 具名路径 -->
+<p><a v-link="{ name: 'user', params: { userId: 123 }}">User</a><br>应该使用 v-link 而不是 href 来处理浏览时的跳转。原因如下</p>
+<p>它在HTML5 history模式和hash模式下的工作方式相同，所以如果你决定改变模式，或者IE9浏览器退化为hash模式时，都不需要做任何改变<br>在HTML5 history模式下，v-link 会监听点击事件，防止浏览器尝试重新加载页面</p>
+<p>在HTML5 history模式下使用 root 选项时，不需要在 v-link 的URL中包含root路径</p>
+<p>V-Link其他选项<br>replace<br>一个带有 replace: true 的链接被点击时将会触发 router.replace() 而不是 router.go()。由此产生的跳转不会留下历史记录</p>
+<p><router-link :to="{name: 'User', params: {userid: 'zhangsan' }, replace: true }">replace</router-link><br>append<br>带有 append: true 选项的相对路径链接会确保该相对路径始终添加到当前路径之后。举例来说，从 /a 跳转到相对路径 b 时，如果没有 append: true 我们会跳转到 /b，但有 append: true 则会跳转到 /a/b</p>
+<p><router-link :to="{name: 'User', append: true }">append</router-link><br>路由钩子<br>全局的钩子</p>
+<p>beforeEach(to, from, next)<br>添加一个全局的前置钩子函数，这个函数会在路由切换开始时调用。调用发生在整个切换流水线之前。如果此钩子函数拒绝了切换，整个切换流水线根本就不会启动</p>
+<p>const router = new Router({<br>   …<br>export default router<br>router.beforeEach((to, from, next) =&gt; {<br>  // to and from are both route objects. must call <code>next</code>.<br>  console.log(to) // to: Route: 即将要进入的目标 路由对象<br>  console.log(‘————-‘)<br>  console.log(from) // from: Route: 当前导航正要离开的路由<br>  console.log(‘————-‘)<br>  console.log(next) // 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。</p>
+<p>})<br>路由解析流程<br>1.导航被触发。<br>2.在失活的组件里调用离开守卫。<br>3.调用全局的 beforeEach 守卫。<br>4.在重用的组件里调用 beforeRouteUpdate 守卫 (2.2+)。<br>5.在路由配置里调用 beforeEnter。<br>6.解析异步路由组件。<br>7.在被激活的组件里调用 beforeRouteEnter。<br>8.调用全局的 beforeResolve 守卫 (2.5+)。<br>9.导航被确认。<br>10.调用全局的 afterEach 钩子。<br>11.触发 DOM 更新。<br>12.用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数。<br>使用beforeEach控制路由跳转，拦截路由<br>router.beforeEach((to, from, next) =&gt; {<br>  // to and from are both route objects. must call <code>next</code>.<br>  let toQuery = JSON.parse(JSON.stringify(to.query));<br>  console.log(toQuery) // 获取连接参数<br>  if(to.meta.requiredAuth == true){ // 如果要进入的路由需要用户登陆<br>    if(window.localStorage.getItem(‘username’)){ // 获取存储的用户名<br>      next()<br>    } else{ // 没有获取到，则跳转到登陆页面<br>      next({<br>        path: ‘/‘,<br>        query: toQuery,<br>      })<br>    }<br>  }else{<br>    next()<br>  }<br>})</p>
+	
 	</div>
 	
 	<div id="current-post-cover" data-scr="/img/123321.jpg"></div>
@@ -370,6 +409,32 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/13/Vue-cli/" title="Vue-cli">
+								Vue-cli			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								s
+组件开发自动化工具Node.js是一个新的后端(后台)语言，它的语法和JavaScript类似，所以可以说它是属于前端的后端语言
+运行环境：后端语言一般运行在服务器端，前端语言运行在客户端的浏览器上
+功能：后端语言可以操作文件，可...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/13/Vue-cli/" title="Vue-cli">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="Vue-cli"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -588,29 +653,6 @@ Django基于自身框架结构形成了MVT设计Django是一个重量级框架�
 							<a href="/2019/08/12/高阶函数/" title="高阶函数">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="高阶函数"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/NumPy基本方法/" title="NumPy基本方法">
-								NumPy基本方法			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								numpy方法总结NumPy基本方法一、数组方法创建数组：arange()创建一维数组；array()创建一维或多维数组，其参数是类似于数组的对象，如列表等读取数组元素：如a[0],a[0,0]数组变形：如b=a.reshape(2,...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/NumPy基本方法/" title="NumPy基本方法">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="NumPy基本方法"/>
 							</a>
 						</div>
 					</li>											
