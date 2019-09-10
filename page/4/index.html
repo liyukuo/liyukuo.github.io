@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      tags | LiYukuo
+      LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			标签
+			主页
 		
 	</p>
 
@@ -251,40 +251,107 @@
 			
 		<!--main-->
 		<main>
-			<!--content start-->
-<div class="layout-page">	
-	<div class="layout-page-container">
+			
 
-		<div class="layout-page-header">
 
-	
 
-		<i class="fa fa-pencil-square-o">总计 10 个 标签</i>
-
-	
-	
-</div>
-
+	<!--cart style-->
+	<div class="layout-cart">
+	<div id="layout-cart">
 		
+		<div class="post" id="post">
+			<a class="post-cover" href="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" title=" Redis实现分布式锁以及利用乐观锁保证数据安全 ">
+				
+				<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg"/>
+			</a>
 
-			<div class="tags">
-				<a href="/tags/Django/" style="font-size: 22.33px; color: #500">Django</a> <a href="/tags/Docker/" style="font-size: 22.33px; color: #500">Docker</a> <a href="/tags/Git/" style="font-size: 16px; color: #000">Git</a> <a href="/tags/Python/" style="font-size: 35px; color: #f00">Python</a> <a href="/tags/Scrapy/" style="font-size: 22.33px; color: #500">Scrapy</a> <a href="/tags/Vue/" style="font-size: 22.33px; color: #500">Vue</a> <a href="/tags/git/" style="font-size: 16px; color: #000">git</a> <a href="/tags/hexo/" style="font-size: 16px; color: #000">hexo</a> <a href="/tags/个人简历/" style="font-size: 16px; color: #000">个人简历</a> <a href="/tags/数据库/" style="font-size: 28.67px; color: #a00">数据库</a>
+			<div class="post-text">
+				<p class="post-time">
+					七月 11日, 2018
+				</p>	
+				<h3 class="post-title" id="post-title-index">
+					<a href="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" title="Redis实现分布式锁以及利用乐观锁保证数据安全">
+						<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+						
+	<a href="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" itemprop="url">
+		Redis实现分布式锁以及利用乐观锁保证数据安全
+	</a>
+
+					</a>
+				</h3>
+				<p class="post-content">
+					
+						分布式锁一般来说，对数据进行加锁时，程序首先需要通过获取acquire锁来得到对数据操作、排他的权力
+在操作完毕之后，还需要通过release进行锁的释放...
+					
+				</p>
+				<p class="post-meta">
+					
+
+	
+    <span class="leancloud_visitors" id="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/_visitors" data-url="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" data-title="Redis实现分布式锁以及利用乐观锁保证数据安全">
+       	<i class="fa fa-eye"></i>
+       	热度
+        <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
+    </span>
+    
+
+
+
+	
+    <span class="leancloud_likes" id="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/_likes" data-url="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" data-title="Redis实现分布式锁以及利用乐观锁保证数据安全" rel="unlike">
+        <i class="fa fa-heart"></i>
+        喜欢
+        <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
+    </span>
+
+					
+
+	<!-- leancloud -->
+	<!--
+	时间：2018-11-27
+	描述：
+		文章访问量：visitors
+		文章喜欢量：likes	
+		文章排行榜：topNPost
+		其他得说明：
+			01-Cookie相关的函数 
+				https://blog.csdn.net/somehow1002/article/details/78511541（Author：somehow1002）
+			02-visitors相关的函数 
+				https://blog.csdn.net/u013553529/article/details/63357382（Author：爱博客大伯）
+				https://notes.doublemine.me/2015-10-21-为NexT主题添加文章阅读量统计功能.html（Author：夏末）
+			03-topNPost相关的函数
+				https://hoxis.github.io/hexo-next-read-rank.html（Author：hoxis）
+			04-likes相关的函数，
+				参考了01 & 02进行简单的设计与实现
+-->
+
+
+
+	<script>
+		var appid = 'dXz',
+            appkey = 'wzG';	  
+        AnnieLeancloud(appid, appkey);         
+	</script>
+    
+
+	
+
+				</p>
 			</div>
-
+		</div>
+		
+	</div>
+	
+	
+	<div id="pagination">
 		
 	</div>
 
 	
-		<!-- 
-			ajax 查询相应标签or分类的文章 
-			We can use "Content filtering plugin" to instead ajax!
-		-->
-		<div class="layout-TCP-container">
-			<div id="TCP-title"></div>
-			<div id="TCP-content"></div>
-		</div>
-	
+
 </div>
+	
 
 		</main>
 

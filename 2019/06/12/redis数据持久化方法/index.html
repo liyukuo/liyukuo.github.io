@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      迭代器 | LiYukuo
+      redis数据持久化的方法 | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《迭代器》
+			当前文章&nbsp;:&nbsp;《redis数据持久化的方法》
 		
 	</p>
 
@@ -258,6 +258,18 @@
 		插件作者：KELEN
 		插件来源: https://github.com/KELEN/katelog
 -->
+
+	
+		<div class="layout-toc">
+			<div id="layout-toc">
+				<div class="k-catelog-list" id="catelog-list" data-title="文章目录"></div>
+			</div>
+		</div>
+
+		
+		<script src="/plugin/toc/katelog.min.js"></script>
+
+		
 	 
 
 <div class="layout-post">
@@ -265,8 +277,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/12/迭代器/" itemprop="url">
-		迭代器
+	<a href="/2019/06/12/redis数据持久化方法/" itemprop="url">
+		redis数据持久化的方法
 	</a>
 
 	</div>
@@ -279,9 +291,9 @@
 
 	发布于
 
-	<a href="/2019/08/12/迭代器/" itemprop="url">
-		<time datetime="2019-08-12T04:05:52.000Z" itemprop="datePublished">
-	  		2019-08-12
+	<a href="/2019/06/12/redis数据持久化方法/" itemprop="url">
+		<time datetime="2019-06-12T05:18:40.000Z" itemprop="datePublished">
+	  		2019-06-12
 	  </time>
 	</a>
 	&nbsp;
@@ -297,9 +309,9 @@
 
 	更新于
 
-	<a href="/2019/08/12/迭代器/" itemprop="url">
-		<time datetime="2019-08-12T04:05:52.000Z" itemprop="dateUpdated">
-	  		2019-09-09
+	<a href="/2019/06/12/redis数据持久化方法/" itemprop="url">
+		<time datetime="2019-06-12T05:18:40.000Z" itemprop="dateUpdated">
+	  		2019-09-10
 	  </time>
 	</a> 
 
@@ -310,8 +322,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Python/" class=" ">
-			Python
+		<a href="/tags/数据库/" class=" ">
+			数据库
 		</a>
 	
 		
@@ -320,7 +332,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2019/08/12/迭代器/_visitors" data-url="/2019/08/12/迭代器/" data-title="迭代器">
+    <span class="leancloud_visitors" id="/2019/06/12/redis数据持久化方法/_visitors" data-url="/2019/06/12/redis数据持久化方法/" data-title="redis数据持久化的方法">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -330,7 +342,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2019/08/12/迭代器/_likes" data-url="/2019/08/12/迭代器/" data-title="迭代器" rel="unlike">
+    <span class="leancloud_likes" id="/2019/06/12/redis数据持久化方法/_likes" data-url="/2019/06/12/redis数据持久化方法/" data-title="redis数据持久化的方法" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -339,24 +351,27 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<ol>
-<li>迭代是访问集合元素的一种方式。list、tuple、str等类型的数据使用for…in…的循环语法从其中依次拿到数据进行使用，我们把这样的过<br>程称为遍历，也叫迭代</li>
-<li>迭代器是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前不会后退。</li>
-<li>我们把可以通过for…in…这类语句迭代读取一条数据供我们使用的对象称之为可迭代对象（Iterable），可以被for循环遍历的<br>1)  可迭代对象包括：<pre><code>○ 列表、字典、集合、字符串等数据类型。
-○ 数字类型不可迭代</code></pre>2)  如何判断一个对象是否可以迭代:<pre><code>○ 可以使用 isinstance() 判断一个对象是否是 Iterable（可迭代） 对象
-○ 例：
-        □ </code></pre></li>
-<li>我们把这个能帮助我们进行数据迭代的“人”称为迭代器(Iterator)<br>• 可迭代对象的本质就是可以向我们提供一个这样的中间“人”即迭代器帮助我们对其进行迭代遍历使用。<br>• 可迭代对象通过<strong>iter</strong>方法向我们提供一个迭代器，我们在迭代一个可迭代对象的时候，实际上就是先获取该对象提供的一个迭代器，然后通过这个迭代器来依次获取对象中的每一个数据.<br>• 那么也就是说，一个具备了<strong>iter</strong>方法的对象，就是一个可迭代对象。(充分必要条件)<br>课外了解Docker</li>
-<li>iter()函数与next()函数:<br>• list、tuple等都是可迭代对象，我们可以通过iter()函数获取这些可迭代对象的迭代器。然后我们可以对获取到的迭代器不断使用next()函数来获取下一条数据。<br>• iter()函数实际上就是调用了可迭代对象的<strong>iter</strong>方法。（本质）<br>• 当我们已经迭代完最后一个数据之后，再次调用next()函数会抛出StopIteration的异常，来告诉我们所有数据都已迭代完成，不用再执行next()函数了。<br>• python要求迭代器本身也是可迭代的，所以我们还要为迭代器实现<strong>iter</strong>方法，而<strong>iter</strong>方法要返回一个迭代器，迭代器自身正是一个迭代器，所以迭代器的<strong>iter</strong>方法返回自身即可。<br>• 一个实现了<strong>iter</strong>方法和<strong>next</strong>方法的对象，就是迭代器。</li>
-</ol>
-<p>6．如何判断一个对象是否是迭代器：可以使isinstance()判断一个对象是否是Iterator对象</p>
-<ol start="7">
-<li>并不是只有for循环能接收可迭代对象，除了for循环能接收可迭代对象，list、tuple等也能接收。</li>
-</ol>
+		<p>redis提供了两种办法，进行数据持久化，保证数据安全可靠，也就是人们众所周知的RDB和AOF机制</p>
+<p>快照（snapshotting）<br>客户端发送BGSAVE命令来创建一个快照，当调用BGSAVE命令之后，Redis会调用fork来创建一个子进程，该子进程负责将快照写入硬盘，而父进程则继续处理命令请求<br>客户端发送SAVE来创建一个快照，接到SAVE命令的redis服务器会在快照创建完毕之前不响应任何其他命令，save命令并不常用，我们通常只会在没有足够内存去执行BGSAVE的情况下，或者无视等待持久化操作所造成的时间浪费问题，也可以使用该命令<br>当redis配置了save选项，比如save 60 10000，那么redis最近一次创建快照开始算起，当60秒内有10000次写入这个条件被满足时，redis就会自动触发BGSAVE命令，当用户配置了多个save选项，当任意一个save条件被满足时，redis就会触发一次bgsave 命令<br>当redis接收到了shutdown命令以及标准的term信号时，会自动执行save命令，阻塞所有的客户端，不再执行客户端发送的任何命令，并在save命令执行完毕之后关闭服务器<br>当redis实现主从同步时，从服务器向主服务器发送sync命令时，此时，如果主服务器目前没有在执行bgsave命令，或并非刚刚执行完bgsave命令，那么此时主服务器就会执行bgsave进行数据持久化备份，<br>1.主服务器会在命令执行完毕之后，向所有从服务器发送快照文件<br>2.并在发送期间继续记录被执行的写命令<br>3.从服务器会在接收到新的快照文件之后丢弃所有的旧数据<br>4.载入新收到的快照文件<br>5.主服务器发完新的快照文件继续将缓冲区中的写命令同步到从服务器上<br>6.从服务器完成对快照的载入之后，开始接收命令，并执行新的主服务器发来的缓冲区里的写命令<br>7.从服务器回归原来的工作模式，继续接收读指令<br>save选项<br>save 900 1<br>如上的redis配置选项告知redis，它应该根据这个选项提供的两个值来进行bgsave操作</p>
+<p>如果服务器距离上次成功生成快照已超过了900秒，或者在这期间执行了至少一次写操作，那么redis 就会自动开始一次新的BGSAVE操作</p>
+<p>快照规则的选定是一个技术活，需要在开发环境即模拟生产环境，避免备份操作频繁，或是过于稀少而导致的资源浪费或含有丢失大量数据的隐患<br>数据较大<br>对于真实的物理机，vmware或者kvm虚拟机来说，redis进程每占用多一个G的内存，创建bgsave进程所需要的时间就要多增加10~20毫秒</p>
+<p>对于xen虚拟机来说，同样一个GB的redis内存增加，会导致bgsave子进程的时间多200~300毫秒</p>
+<p>虽然bgsave不需要阻塞服务，但是由于开启了子进程，会造成资源抢占而导致redis服务停顿，在一个50GB内存的redis服务上执行bgsave命令，创建子进程需要花费15秒，生成快照需要15<del>20分钟；而使用save命令只需要3</del>5分钟即可完成快照生成</p>
+<p>AOF持久化<br>aof机制将被执行的写命令写到AOF文件的末尾，以此来记录数据的变化，</p>
+<p>redis只需要从头到尾的执行一次AOF文件包含的所有写命令，就可以回复AOF文件所记录的数据集，</p>
+<p>AOF配置选项，在centos7操作系统下位于redis配置文件的第594行附近，把no改成yes<br>appendonly no</p>
+<h1 id="appendonly-yes"><a href="#appendonly-yes" class="headerlink" title="appendonly yes"></a>appendonly yes</h1><p>AOF频率的设置<br>appendfsync everysec # 每秒进行一次同步，显示的将多个写命令同步到硬盘<br>appendfsync always # 每个redis写命令都同步的写入磁盘，这样做会严重降低redis的速度<br>appendfsync no # 由操作系统决定应该何时进行同步<br>注意，appendfsync always选项会让Redis每次只写入一个命令，而不是像其他的appendfsync选项那样一次写入多个命令，这种不断写入的少量数据的做法会在固态硬盘的情况下，引发严重的写入放大，甚至会将固态硬盘的寿命从原来的几年降低为几个月</p>
+<p>为了兼顾安全和写入性能，用户可以考虑使用appendfsync everysec选项，让redis以每秒一次的频率对AOF文件进行同步；redis每秒同步一次AOF文件时的性能和不使用任何持久化特性时的性能相差无几，这样的持久化策略，即使出现系统崩溃，也只会损失一秒的数据</p>
+<p>当硬盘忙于执行写入操作时，Redis还会优雅的放慢自己的速度以便适应硬盘的最大写入速度</p>
+<p>数据较大<br>虽然AOF可以最低使时间丢失的时间窗口降低至1秒，但是不断增长的命令记录会写到AOF文件里面，导致AOF的体积越来越大，极端情况下，不断增长的AOF文件甚至会用完所有的磁盘空间，另外，重启的Redis需要重新执行AOF文件所记录的所有命令来还原数据集，如果AOF文件非常大，那么还原操作的时间也会非常漫长</p>
+<p>解决这个AOF文件过大的问题，可以向redis发送bgrewriteaof，这个命令会移除在文件中的冗余命令来重写rewriteAOF文件，使AOF文件的体积变得尽可能的小<br>BGREWRITEAOF指令和BGSAVE工作的原理相似，都需要在后台开辟子进程，由子进程负责对AOF文件进行重写；因为AOF文件重写需要子进程，那么同样会造成开辟子进程造成的性能问题和内存占用问题；</p>
+<p>还需要注意的是，当AOF文件过大，在重写过程以及重写完成之后删除旧有AOF文件，删除一个较大的AOF文件还可能会导致操作系统挂起数秒</p>
+<p>设置AOF<br>auto-aof-rewrite-percentage 100<br>auto-aof-rewrite-min-size 64mb<br>当AOF文件此时大于64M，并且AOF文件的体积比上一次重写之后的体积大于了至少一倍100%，那么redis就会执行BGREWRITEAOF命令</p>
+<p>如果AOF重写频繁，可以适当调整auto-aof-rewrite-percentage选项，可以使redis在AOF体积变得更大的情况下才进行重写</p>
 	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/Redis.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -371,12 +386,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/12/生成器/" title="生成器" rel="prev">
+			<a href="/2019/07/03/os模块/" title="os模块" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/08/12/线程进程/" title="线程进程" rel="next">
+			<a href="/2019/05/13/Vue-cli/" title="Vue-cli" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -397,22 +412,22 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/链表、顺序表/" title="性表（链表、顺序表）">
-								性表（链表、顺序表）			
+							<a class="relate-post-title" href="/2019/08/12/mongo/" title="mongo">
+								mongo			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
 								八月 12日, 2019				
 							</p>
 							<p class="relate-post-content">
-								1.线性表    1）是具有零个或多个数据元素的有限序列，首尾相接    2）特性：        ○ 第一个数据元素没有前驱元素；        ○ 最后一个数据元素没有后继元素；        ○ 其余每个数据元素只有一个前驱元素...
+								MongoDB是目前最好的面向文档的免费开源NoSQL数据库。如果你正准备参加MongoDB NoSQL数据库的技术面试，你最好看看下面的MongoDB NoSQL面试问答。这些MongoDB NoSQL面试问答涵盖了NoSQL数据库...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/12/链表、顺序表/" title="性表（链表、顺序表）">				
+							<a href="/2019/08/12/mongo/" title="mongo">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="性表（链表、顺序表）"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="mongo"/>
 							</a>
 						</div>
 					</li>											
@@ -420,200 +435,24 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/高阶函数/" title="高阶函数">
-								高阶函数			
+							<a class="relate-post-title" href="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" title="Redis实现分布式锁以及利用乐观锁保证数据安全">
+								Redis实现分布式锁以及利用乐观锁保证数据安全			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
+								七月 11日, 2018				
 							</p>
 							<p class="relate-post-content">
-								
-在Python中，变量可以指向函数，函数名也是变量 既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。
-
-常用高阶函数： • map()：地图
-○ 语法：map(func...
+								分布式锁一般来说，对数据进行加锁时，程序首先需要通过获取acquire锁来得到对数据操作、排他的权力
+在操作完毕之后，还需要通过release进行锁的释放，以供其他程序使用
+Redis使用WATCH命令用以代替对数据进行加锁，WATC...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2019/08/12/高阶函数/" title="高阶函数">				
+							<a href="/2018/07/11/Redis实现分布式锁以及利用乐观锁保证数据安全/" title="Redis实现分布式锁以及利用乐观锁保证数据安全">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="高阶函数"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/tcp/" title="tcp">
-								tcp			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								
-TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由 IETF的RFC 793定义。
-
-TCP通信需要经过创建连接、数据...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/tcp/" title="tcp">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="tcp"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/搜索（二分查找、二叉树）/" title="搜索（二分查找、二叉树）">
-								搜索（二分查找、二叉树）			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								搜索是在一个项目集合中找到一个特定项目的算法过程。搜索的几种常见方法：顺序查找、二分法查找（重点讲解）、二叉树查找（数据库索引）、哈希查找
-
-二分查找（Binary Search），又称折半查找。• 二分查找的前提是符号表中的记录必须...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/搜索（二分查找、二叉树）/" title="搜索（二分查找、二叉树）">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="搜索（二分查找、二叉树）"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/协程/" title="协程">
-								协程			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								拓展：    1. 计算密集型：需要占用大量的CPU内存–用多进程    2. IO密集型：需要网络功能，大量的时间都在等待网络数据的到来–用多线程、协程    3. 异步：多任务，多个任务之间执行没有先后顺序，可以同时运行，执行的先...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/协程/" title="协程">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="协程"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/生成器/" title="生成器">
-								生成器			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								1.生成器(generator)。生成器是一类特殊的迭代器。
-
-创建生成器方法 • 1）要创建一个生成器，有很多种方法。第一种方法很简单，只要把一个列表生成式的 [ ] 改成 ( )，可以通过next()函数、for循环、list()...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/生成器/" title="生成器">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="生成器"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/线程进程/" title="线程进程">
-								线程进程			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								Import   threading   导入threading高级模块Import  time             导入时间模块并发：   交替执行的任务并行：   同一时间执行的任务线程执行顺序：   无序的
-
-多任务：就是操...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/线程进程/" title="线程进程">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="线程进程"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/12/re/" title="re">
-								re			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								正则一些特殊符号及文本组合在一起的用来描述字符或字符串的一些规则，叫做正则
-正则中的特殊符号匹配一个范围： [][A-Z]：A, B, C…[0-9]：1, 2, 3…
-匹配任何数字字符：\d\d：1, 2, 3…
-匹配任何空白符：\...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/12/re/" title="re">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="re"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/07/03/os模块/" title="os模块">
-								os模块			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								七月 3日, 2019				
-							</p>
-							<p class="relate-post-content">
-								OS模块使用os模块时，不需要考虑平台差异，解释器会帮大家选择正确的系统支持可以对进程和进程运行环境进行管理该模块还可以处理大部分文件系统操作，比如删除，重命名文件，遍历目录树，以及管理文件访问权限。
-os模块主要有以下几种 :pos...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/07/03/os模块/" title="os模块">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="os模块"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg" alt="Redis实现分布式锁以及利用乐观锁保证数据安全"/>
 							</a>
 						</div>
 					</li>											
@@ -640,6 +479,175 @@ os模块主要有以下几种 :pos...
 							<a href="/2019/09/09/简历/" title="个人简历">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="img/123321.jpg" alt="个人简历"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/05/Django/" title="Django简介">
+								Django简介			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 5日, 2019				
+							</p>
+							<p class="relate-post-content">
+								
+
+Django基于自身框架结构形成了MVT设计Django是一个重量级框架功能齐全，提供一站式解决的思路自带ORM和模板引擎，支持jinja等非官方模板引擎最出名的是其全自动化的管理后台：只需要使用起ORM，做简单的对象定义，它就能...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/05/Django/" title="Django简介">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/timg.jpg" alt="Django简介"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
+								利用Docker来搭建分布式文件系统FastDfs			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
+实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/链表、顺序表/" title="性表（链表、顺序表）">
+								性表（链表、顺序表）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								1.线性表    1）是具有零个或多个数据元素的有限序列，首尾相接    2）特性：        ○ 第一个数据元素没有前驱元素；        ○ 最后一个数据元素没有后继元素；        ○ 其余每个数据元素只有一个前驱元素...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/链表、顺序表/" title="性表（链表、顺序表）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="性表（链表、顺序表）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/阻塞/" title="同/异步、非/阻塞">
+								同/异步、非/阻塞			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								关于同步和异步
+同步和异步其实指的是，请求发起方对消息结果的获取是主动发起的，还是等被动通知的。如果是请求方主动发起的，一直在等待应答结果（同步阻塞），或者可以先去处理其他的事情，但要不断轮询查看发起的请求是否有应答结果（同步非阻塞 ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/阻塞/" title="同/异步、非/阻塞">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="同/异步、非/阻塞"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/git上传项目/" title="git上传项目">
+								git上传项目			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								GIT到码云上创建仓库 (建议设置共有)在计算机上
+
+新建文件夹
+到该文件夹目录
+初始化$ git init$ git remote add origin https://gitee.com/chidou123_admin/vue_k...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/git上传项目/" title="git上传项目">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="git上传项目"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/nginx和uwsgi的区别和作用：/" title="nginx和uwsgi的区别和作用：">
+								nginx和uwsgi的区别和作用：			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								nginx和uwsgi的区别和作用：Django+uwsgi+nginxnginx和uwsgi的区别和作用：1, nginx是对外的服务器，外部浏览器通过url访问nginx, uwsgi是对内的服务器，主要用来处理动态请求。2, n...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/nginx和uwsgi的区别和作用：/" title="nginx和uwsgi的区别和作用：">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="nginx和uwsgi的区别和作用："/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/linux 安装uwsgi/" title="linux 安装uwsgi">
+								linux 安装uwsgi			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								linux 安装uwsgi安装并查看版本• yum groupinstall “Development tools”• yum install zlib-devel bzip2-devel pcre-devel openssl-dev...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/linux 安装uwsgi/" title="linux 安装uwsgi">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="linux 安装uwsgi"/>
 							</a>
 						</div>
 					</li>											
