@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      性表（链表、顺序表） | LiYukuo
+      《Sourcrtree》——Git管理工具 | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《性表（链表、顺序表）》
+			当前文章&nbsp;:&nbsp;《《Sourcrtree》——Git管理工具》
 		
 	</p>
 
@@ -265,8 +265,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2017/08/12/链表、顺序表/" itemprop="url">
-		性表（链表、顺序表）
+	<a href="/2019/09/12/《Sourcrtree》——Git管理工具/" itemprop="url">
+		《Sourcrtree》——Git管理工具
 	</a>
 
 	</div>
@@ -279,9 +279,9 @@
 
 	发布于
 
-	<a href="/2017/08/12/链表、顺序表/" itemprop="url">
-		<time datetime="2017-08-12T05:20:03.000Z" itemprop="datePublished">
-	  		2017-08-12
+	<a href="/2019/09/12/《Sourcrtree》——Git管理工具/" itemprop="url">
+		<time datetime="2019-09-12T00:13:52.000Z" itemprop="datePublished">
+	  		2019-09-12
 	  </time>
 	</a>
 	&nbsp;
@@ -297,9 +297,9 @@
 
 	更新于
 
-	<a href="/2017/08/12/链表、顺序表/" itemprop="url">
-		<time datetime="2017-08-12T05:20:03.000Z" itemprop="dateUpdated">
-	  		2019-09-10
+	<a href="/2019/09/12/《Sourcrtree》——Git管理工具/" itemprop="url">
+		<time datetime="2019-09-12T00:13:52.000Z" itemprop="dateUpdated">
+	  		2019-09-12
 	  </time>
 	</a> 
 
@@ -310,8 +310,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Python/" class=" ">
-			Python
+		<a href="/tags/Git/" class=" ">
+			Git
 		</a>
 	
 		
@@ -320,7 +320,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2017/08/12/链表、顺序表/_visitors" data-url="/2017/08/12/链表、顺序表/" data-title="性表（链表、顺序表）">
+    <span class="leancloud_visitors" id="/2019/09/12/《Sourcrtree》——Git管理工具/_visitors" data-url="/2019/09/12/《Sourcrtree》——Git管理工具/" data-title="《Sourcrtree》——Git管理工具">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -330,7 +330,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2017/08/12/链表、顺序表/_likes" data-url="/2017/08/12/链表、顺序表/" data-title="性表（链表、顺序表）" rel="unlike">
+    <span class="leancloud_likes" id="/2019/09/12/《Sourcrtree》——Git管理工具/_likes" data-url="/2019/09/12/《Sourcrtree》——Git管理工具/" data-title="《Sourcrtree》——Git管理工具" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -339,42 +339,14 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>1.线性表<br>    1）是具有零个或多个数据元素的有限序列，首尾相接<br>    2）特性：<br>        ○ 第一个数据元素没有前驱元素；<br>        ○ 最后一个数据元素没有后继元素；<br>        ○ 其余每个数据元素只有一个前驱元素和一个后继元素。<br>        ○ 抽象数据类型：<br>    3）线性表一般包括插入、删除、查找等基本操作。<br>    4）线性表按物理存储结构的不同可分为顺序表（顺序存储）和链表（链式存储）：<br>            § 顺序表（存储结构连续）<br>            § 链表（存储结构上不连续，逻辑上连续）</p>
-<ol start="2">
-<li>顺序表:   在计算机内存中以一组地址连续的存储单元依次存储数据元素的线性结构。<br> • 顺序表效率分析：n’n’m<pre><code>§ 顺序表插入和删除一个元素，最好情况下其时间复杂度（这个元素在最后一个位置）为O(1)，最坏情况下其时间复杂度为O(n)。
-§ 顺序表支持随机访问，读取一个元素的时间复杂度为O(1)。</code></pre> • 顺序表的优缺点：<pre><code>§ 优点：支持随机访问
-§ 缺点：插入和删除操作需要移动大量的元素，造成存储空间的碎片。</code></pre> • 顺序表适合元素个数变化不大，且更多是读取数据的场合。</li>
-<li>链表：顺序表的构建需要预先知道数据大小来申请连续的存储空间，而在进行扩充时又需要进行数据的搬迁，所以使用起来并不是很灵活。<br> • 链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。<br> • 定义：是一种常见的基础数据结构，是一种线性表，但是不像顺序表一样连续存储数据，而是在每一个节点（数据存储单元）里存放下一个节点的位置信息（即地址）。<br> • 分类：<pre><code>○ 单向链表：单向链表也叫单链表，是链表中最简单的一种形式，它的每个节点包含两个域，一个信息域（元素域）和一个链接域。这个链接指向链表中的下一个节点，而最后一个节点的链接域则指向一个空值。
-    § 表元素域elem用来存放具体的数据。
-    § 链接域next用来存放下一个节点的位置（python中的标识）
-    § 变量p指向链表的头节点（首节点）的位置，从p出发能找到表中的任意节点。
-    § 操作：
-        □ is_empty() 链表是否为空
-        □ length() 链表长度
-        □ travel() 遍历整个链表
-        □ add(item) 链表头部添加元素
-        □ append(item) 链表尾部添加元素
-        □ insert(pos, item) 指定位置添加元素
-        □ remove(item) 删除节点
-        □ search(item) 查找节点是否存在
-○ 单向循环链表:  单链表的一个变形是单向循环链表，链表中最后一个节点的next域不再为None，而是指向链表的头节点。
-    § 操作：
-        □ is_empty() 判断链表是否为空
-        □ length() 返回链表的长度
-        □ travel() 遍历
-        □ add(item) 在头部添加一个节点
-        □ append(item) 在尾部添加一个节点
-        □ insert(pos, item) 在指定位置pos添加节点
-        □ remove(item) 删除一个节点
-        □ search(item) 查找节点是否存在
-○ 双向链表（复杂）:  一个指向前一个节点，当此节点为第一个节点时，指向空值；而另一个指向下一个节点，当此节点为最后一个节点时，指向空值。
-：操作与前两个相同</code></pre></li>
-<li>对比：链表失去了顺序表随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大，但对存储空间的使用要相对灵活。</li>
-</ol>
-	
+		<p>建议大家在学习前期最好不要用《Sourcrtree》——Git管理工具</p>
+<p>  为啥说最好前期不要用呢，是因为大家本来对git不熟悉的话，还是建议多敲敲命令，多熟悉一下git，对项目的结构会认识很多，很深。（只是个人意见）如果想用的话，你们看悦哥的博文——git版本控制图形化界面推荐</p>
+<pre><code> 这种工具个人感觉是给那些老程序员用的，对于新手虽然说很友好，但是不懂git原理的话，用起来提心吊胆， 并且如果一不小心点错了。你也不知道怎么改，老手直接一行命令解决照样用工具，但是你不行，所以建议大家还是先熟悉了git之后，在使用工具，我周围的都是命令，只有我一个人使用工具，（但是我觉的贼好使[/偷笑]）
+
+这个工具支持Windows和Mac,官方有下载地址，大家可以自行去找。Sourcrtree官网  祝大家一切顺利！</code></pre>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/601.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -389,12 +361,8 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2017/12/12/数据结构与算法/" title="数据结构与算法" rel="prev">
-				&laquo;上一篇
-			</a>
 		
-		
-			<a href="/2017/08/12/高阶函数/" title="高阶函数" rel="next">
+			<a href="/2019/09/12/git版本控制图形化界面推荐/" title="git版本控制图形化界面推荐" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -412,6 +380,106 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/12/git版本控制图形化界面推荐/" title="git版本控制图形化界面推荐">
+								git版本控制图形化界面推荐			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								其实呢，有点不太理解为什么有很多人喜欢在命令行下敲命令，尤其是日常工作中使用频率蛮高的git,拉取，合并，切换分支什么的要打很多命令，手速很快的情况下还容易敲错命令导致误操作，推荐一个我日常使用的git图形化界面工具：SourceTr...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/12/git版本控制图形化界面推荐/" title="git版本控制图形化界面推荐">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/600.jpg" alt="git版本控制图形化界面推荐"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/git上传项目/" title="git上传项目">
+								git上传项目			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								GIT到码云上创建仓库 (建议设置共有)在计算机上
+
+新建文件夹
+到该文件夹目录
+初始化$ git init$ git remote add origin https://gitee.com/chidou123_admin/vue_k...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/git上传项目/" title="git上传项目">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/77.jpg" alt="git上传项目"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/09/09/简历/" title="个人简历">
+								个人简历			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								九月 9日, 2019				
+							</p>
+							<p class="relate-post-content">
+								​               个人简介
+个人信息
+ 姓   名：李宇阔                             毕业院校：河北省石家庄学院
+民   族：汉                               ...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/09/09/简历/" title="个人简历">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/123321.jpg" alt="个人简历"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
+								利用Docker来搭建分布式文件系统FastDfs			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
+实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/678.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
@@ -440,25 +508,22 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/11/12/re/" title="re">
-								re			
+							<a class="relate-post-title" href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								十一月 12日, 2018				
+								八月 12日, 2019				
 							</p>
 							<p class="relate-post-content">
-								正则一些特殊符号及文本组合在一起的用来描述字符或字符串的一些规则，叫做正则
-正则中的特殊符号匹配一个范围： [][A-Z]：A, B, C…[0-9]：1, 2, 3…
-匹配任何数字字符：\d\d：1, 2, 3…
-匹配任何空白符：\...
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）首页 - Mac &amp; Linux /2019-09-04    我们知道，Redis的集群方案大致有三种：1）redis clu...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/11/12/re/" title="re">				
+							<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="img/666.jpg" alt="re"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）"/>
 							</a>
 						</div>
 					</li>											
@@ -466,24 +531,23 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/08/12/线程进程/" title="线程进程">
-								线程进程			
+							<a class="relate-post-title" href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法">
+								redis数据持久化的方法			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								八月 12日, 2018				
+								六月 12日, 2019				
 							</p>
 							<p class="relate-post-content">
-								Import   threading   导入threading高级模块Import  time             导入时间模块并发：   交替执行的任务并行：   同一时间执行的任务线程执行顺序：   无序的
-
-多任务：就是操...
+								redis提供了两种办法，进行数据持久化，保证数据安全可靠，也就是人们众所周知的RDB和AOF机制
+快照（snapshotting）客户端发送BGSAVE命令来创建一个快照，当调用BGSAVE命令之后，Redis会调用fork来创建一...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/08/12/线程进程/" title="线程进程">				
+							<a href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="线程进程"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg" alt="redis数据持久化的方法"/>
 							</a>
 						</div>
 					</li>											
@@ -491,23 +555,25 @@
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/07/03/os模块/" title="os模块">
-								os模块			
+							<a class="relate-post-title" href="/2019/05/13/Vue-cli/" title="Vue-cli">
+								Vue-cli			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								七月 3日, 2018				
+								五月 13日, 2019				
 							</p>
 							<p class="relate-post-content">
-								OS模块使用os模块时，不需要考虑平台差异，解释器会帮大家选择正确的系统支持可以对进程和进程运行环境进行管理该模块还可以处理大部分文件系统操作，比如删除，重命名文件，遍历目录树，以及管理文件访问权限。
-os模块主要有以下几种 :pos...
+								s
+组件开发自动化工具Node.js是一个新的后端(后台)语言，它的语法和JavaScript类似，所以可以说它是属于前端的后端语言
+运行环境：后端语言一般运行在服务器端，前端语言运行在客户端的浏览器上
+功能：后端语言可以操作文件，可...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/07/03/os模块/" title="os模块">				
+							<a href="/2019/05/13/Vue-cli/" title="Vue-cli">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="img/55.jpg" alt="os模块"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/timg (1).jpg" alt="Vue-cli"/>
 							</a>
 						</div>
 					</li>											
@@ -515,25 +581,22 @@ os模块主要有以下几种 :pos...
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2018/05/12/tcp/" title="tcp">
-								tcp			
+							<a class="relate-post-title" href="/2019/05/02/Vue-路由组件/" title="Vue-路由组件">
+								Vue-路由组件			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								五月 12日, 2018				
+								五月 2日, 2019				
 							</p>
 							<p class="relate-post-content">
 								
-TCP协议，传输控制协议（英语：Transmission Control Protocol，缩写为 TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由 IETF的RFC 793定义。
-
-TCP通信需要经过创建连接、数据...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2018/05/12/tcp/" title="tcp">				
+							<a href="/2019/05/02/Vue-路由组件/" title="Vue-路由组件">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="tcp"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/timg (1).jpg" alt="Vue-路由组件"/>
 							</a>
 						</div>
 					</li>											
@@ -541,123 +604,22 @@ TCP通信需要经过创建连接、数据...
 			
 					<li>
 						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/12/12/协程/" title="协程">
-								协程			
+							<a class="relate-post-title" href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务">
+								使用Redisearch实现的全文检索功能服务			
 							</a>
 							<p class="relate-post-date">
 								<i class="fa fa-calendar"></i>
-								十二月 12日, 2017				
+								五月 2日, 2019				
 							</p>
 							<p class="relate-post-content">
-								拓展：    1. 计算密集型：需要占用大量的CPU内存–用多进程    2. IO密集型：需要网络功能，大量的时间都在等待网络数据的到来–用多线程、协程    3. 异步：多任务，多个任务之间执行没有先后顺序，可以同时运行，执行的先...
+								“检索”是很多产品中无法绕开的一个功能模块，当数据量小的时候可以使用模糊查询等操作凑合一下，但是当面临海量数据和高并发的时候，业界常用 elasticsearch 和 lucene 等方案，但是elasticsearch对运行时内存有...
 							</p>
 						</div>
 
 						<div class="relate-post-cover">
-							<a href="/2017/12/12/协程/" title="协程">				
+							<a href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务">				
 								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="协程"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/08/12/高阶函数/" title="高阶函数">
-								高阶函数			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2017				
-							</p>
-							<p class="relate-post-content">
-								
-在Python中，变量可以指向函数，函数名也是变量 既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。
-
-常用高阶函数： • map()：地图
-○ 语法：map(func...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/08/12/高阶函数/" title="高阶函数">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="高阶函数"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/08/12/迭代器/" title="迭代器">
-								迭代器			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 12日, 2017				
-							</p>
-							<p class="relate-post-content">
-								
-迭代是访问集合元素的一种方式。list、tuple、str等类型的数据使用for…in…的循环语法从其中依次拿到数据进行使用，我们把这样的过程称为遍历，也叫迭代
-迭代器是一个可以记住遍历的位置的对象。迭代器对象从集合的第一个元素开始...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/08/12/迭代器/" title="迭代器">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="迭代器"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2017/06/12/生成器/" title="生成器">
-								生成器			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								六月 12日, 2017				
-							</p>
-							<p class="relate-post-content">
-								1.生成器(generator)。生成器是一类特殊的迭代器。
-
-创建生成器方法 • 1）要创建一个生成器，有很多种方法。第一种方法很简单，只要把一个列表生成式的 [ ] 改成 ( )，可以通过next()函数、for循环、list()...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2017/06/12/生成器/" title="生成器">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="生成器"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/09/12/《Sourcrtree》——Git管理工具/" title="《Sourcrtree》——Git管理工具">
-								《Sourcrtree》——Git管理工具			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								九月 12日, 2019				
-							</p>
-							<p class="relate-post-content">
-								建议大家在学习前期最好不要用《Sourcrtree》——Git管理工具
-  为啥说最好前期不要用呢，是因为大家本来对git不熟悉的话，还是建议多敲敲命令，多熟悉一下git，对项目的结构会认识很多，很深。（只是个人意见）如果想用的话，你...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/09/12/《Sourcrtree》——Git管理工具/" title="《Sourcrtree》——Git管理工具">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/601.jpg" alt="《Sourcrtree》——Git管理工具"/>
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg" alt="使用Redisearch实现的全文检索功能服务"/>
 							</a>
 						</div>
 					</li>											
