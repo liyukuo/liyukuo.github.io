@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      Vue-路由组件 | LiYukuo
+      三次握手四次挥手详解 | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《Vue-路由组件》
+			当前文章&nbsp;:&nbsp;《三次握手四次挥手详解》
 		
 	</p>
 
@@ -265,8 +265,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/05/02/Vue-路由组件/" itemprop="url">
-		Vue-路由组件
+	<a href="/2019/05/02/三次握手四次挥手详解/" itemprop="url">
+		三次握手四次挥手详解
 	</a>
 
 	</div>
@@ -279,7 +279,7 @@
 
 	发布于
 
-	<a href="/2019/05/02/Vue-路由组件/" itemprop="url">
+	<a href="/2019/05/02/三次握手四次挥手详解/" itemprop="url">
 		<time datetime="2019-05-02T09:00:28.000Z" itemprop="datePublished">
 	  		2019-05-02
 	  </time>
@@ -297,9 +297,9 @@
 
 	更新于
 
-	<a href="/2019/05/02/Vue-路由组件/" itemprop="url">
+	<a href="/2019/05/02/三次握手四次挥手详解/" itemprop="url">
 		<time datetime="2019-05-02T09:00:28.000Z" itemprop="dateUpdated">
-	  		2019-09-10
+	  		2019-09-19
 	  </time>
 	</a> 
 
@@ -310,8 +310,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Vue/" class=" ">
-			Vue
+		<a href="/tags/三次握手四次挥手详解/" class=" ">
+			三次握手四次挥手详解
 		</a>
 	
 		
@@ -320,7 +320,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2019/05/02/Vue-路由组件/_visitors" data-url="/2019/05/02/Vue-路由组件/" data-title="Vue-路由组件">
+    <span class="leancloud_visitors" id="/2019/05/02/三次握手四次挥手详解/_visitors" data-url="/2019/05/02/三次握手四次挥手详解/" data-title="三次握手四次挥手详解">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -330,7 +330,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2019/05/02/Vue-路由组件/_likes" data-url="/2019/05/02/Vue-路由组件/" data-title="Vue-路由组件" rel="unlike">
+    <span class="leancloud_likes" id="/2019/05/02/三次握手四次挥手详解/_likes" data-url="/2019/05/02/三次握手四次挥手详解/" data-title="三次握手四次挥手详解" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -339,10 +339,30 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-			
+		<p>TCP三次握手以及四次挥手的过程</p>
+<p>三次握手的过程</p>
+<p>step1:第一次握手<br>建立连接时，客户端发送SYN包到服务器，其中包含客户端的初始序号seq=x，并进入SYN_SENT状态，等待服务器确认。（其中，SYN=1，ACK=0，表示这是一个TCP连接请求数据报文；序号seq=x，表明传输数据时的第一个数据字节的序号是x）。</p>
+<p>step2:第二次握手<br>服务器收到请求后，必须确认客户的数据包。同时自己也发送一个SYN包，即SYN+ACK包，此时服务器进入SYN_RECV状态。（其中确认报文段中，标识位SYN=1，ACK=1，表示这是一个TCP连接响应数据报文，并含服务端的初始序号seq(服务器)=y，以及服务器对客户端初始序号的确认号ack(服务器)=seq(客户端)+1=x+1）。</p>
+<p>step3:第三次握手<br>客户端收到服务器的SYN+ACK包，向服务器发送一个序列号(seq=x+1)，确认号为ack(客户端)=y+1，此包发送完毕，客户端和服务器进入ESTAB_LISHED(TCP连接成功)状态，完成三次握手。</p>
+<p>未连接队列<br>在三次握手协议中，服务器维护一个未连接队列，该队列为每个客户端的SYN包(syn=j)开设一个条目，该条目表明服务器已收到SYN包，并向客户发出确认，正在等待客户的确认包时，删除该条目，服务器进入ESTAB_LISHED状态。</p>
+<p>常见面试题：</p>
+<p>1.为什么需要三次握手，两次不可以吗？或者四次、五次可以吗？<br>我们来分析一种特殊情况，假设客户端请求建立连接，发给服务器SYN包等待服务器确认，服务器收到确认后，如果是两次握手，假设服务器给客户端在第二次握手时发送数据，数据从服务器发出，服务器认为连接已经建立，但在发送数据的过程中数据丢失，客户端认为连接没有建立，会进行重传。假设每次发送的数据一直在丢失，客户端一直SYN，服务器就会产生多个无效连接，占用资源，这个时候服务器可能会挂掉。这个现象就是我们听过的“SYN的洪水攻击”。<br>总结：第三次握手是为了防止：如果客户端迟迟没有收到服务器返回确认报文，这时会放弃连接，重新启动一条连接请求，但问题是：服务器不知道客户端没有收到，所以他会收到两个连接，浪费连接开销。如果每次都是这样，就会浪费多个连接开销。</p>
+<p>四次挥手过程（关闭客户端到服务器的连接）</p>
+<p>step1：第一次挥手<br>首先，客户端发送一个FIN，用来关闭客户端到服务器的数据传送，然后等待服务器的确认。其中终止标志位FIN=1，序列号seq=u。</p>
+<p>step2：第二次挥手<br>服务器收到这个FIN，它发送一个ACK，确认ack为收到的序号加一。</p>
+<p>step3：第三次挥手<br>关闭服务器到客户端的连接，发送一个FIN给客户端。</p>
+<p>step4：第四次挥手<br>客户端收到FIN后，并发回一个ACK报文确认，并将确认序号seq设置为收到序号加一。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。</p>
+<p>客户端发送FIN后，进入终止等待状态，服务器收到客户端连接释放报文段后，就立即给客户端发送确认，服务器就进入CLOSE_WAIT状态，此时TCP服务器进程就通知高层应用进程，因而从客户端到服务器的连接就释放了。此时是“半关闭状态”，即客户端不可以发送给服务器，服务器可以发送给客户端。<br>此时，如果服务器没有数据报发送给客户端，其应用程序就通知TCP释放连接，然后发送给客户端连接释放数据报，并等待确认。客户端发送确认后，进入TIME_WAIT状态，但是此时TCP连接还没有释放，然后经过等待计时器设置的2MSL后，才进入到CLOSED状态。</p>
+<p>2.为什么需要2MSL时间？<br>首先，MSL即Maximum Segment Lifetime，就是最大报文生存时间，是任何报文在网络上的存在的最长时间，超过这个时间报文将被丢弃。《TCP/IP详解》中是这样描述的：MSL是任何报文段被丢弃前在网络内的最长时间。RFC 793中规定MSL为2分钟，实际应用中常用的是30秒、1分钟、2分钟等。</p>
+<p>TCP的TIME_WAIT需要等待2MSL，当TCP的一端发起主动关闭，三次挥手完成后发送第四次挥手的ACK包后就进入这个状态，等待2MSL时间主要目的是：防止最后一个ACK包对方没有收到，那么对方在超时后将重发第三次握手的FIN包，主动关闭端接到重发的FIN包后可以再发一个ACK应答包。在TIME_WAIT状态时两端的端口不能使用，要等到2MSL时间结束才可以继续使用。当连接处于2MSL等待阶段时任何迟到的报文段都将被丢弃。</p>
+<p>3.为什么是四次挥手，而不是三次或是五次、六次？<br>双方关闭连接要经过双方都同意。所以，首先是客服端给服务器发送FIN，要求关闭连接，服务器收到后会发送一个ACK进行确认。服务器然后再发送一个FIN，客户端发送ACK确认，并进入TIME_WAIT状态。等待2MSL后自动关闭。</p>
+<p>总结：</p>
+<p>（1）为了保证客户端发送的最后一个ACK报文段能够到达服务器。即最后一个确认报文可能丢失，服务器会超时重传，然后服务器发送FIN请求关闭连接，客户端发送ACK确认。一个来回是两个报文生命周期。</p>
+<p>如果没有等待时间，发送完确认报文段就立即释放连接的话，服务器就无法重传，因此也就收不到确认，就无法按步骤进入CLOSED状态，即必须收到确认才能close。<br>（2）防止已经失效的连接请求报文出现在连接中。经过2MSL，在这个连续持续的时间内，产生的所有报文段就可以都从网络消失。</p>
+	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/timg (1).jpg"></div>
+	<div id="current-post-cover" data-scr="/img/608.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -357,12 +377,12 @@
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/05/13/Vue-cli/" title="Vue-cli" rel="prev">
+			<a href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务" rel="next">
+			<a href="/2019/04/12/mongo/" title="mongo" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -380,32 +400,6 @@
 <div class="relate-post">
 	
 		<ul>
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/05/13/Vue-cli/" title="Vue-cli">
-								Vue-cli			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								五月 13日, 2019				
-							</p>
-							<p class="relate-post-content">
-								s
-组件开发自动化工具Node.js是一个新的后端(后台)语言，它的语法和JavaScript类似，所以可以说它是属于前端的后端语言
-运行环境：后端语言一般运行在服务器端，前端语言运行在客户端的浏览器上
-功能：后端语言可以操作文件，可...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/05/13/Vue-cli/" title="Vue-cli">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/timg (1).jpg" alt="Vue-cli"/>
-							</a>
-						</div>
-					</li>											
-			
 			
 					<li>
 						<div class="relate-post-text">
@@ -598,6 +592,32 @@
 							<a href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg" alt="redis数据持久化的方法"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/05/13/Vue-cli/" title="Vue-cli">
+								Vue-cli			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								五月 13日, 2019				
+							</p>
+							<p class="relate-post-content">
+								s
+组件开发自动化工具Node.js是一个新的后端(后台)语言，它的语法和JavaScript类似，所以可以说它是属于前端的后端语言
+运行环境：后端语言一般运行在服务器端，前端语言运行在客户端的浏览器上
+功能：后端语言可以操作文件，可...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/05/13/Vue-cli/" title="Vue-cli">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/timg (1).jpg" alt="Vue-cli"/>
 							</a>
 						</div>
 					</li>											
