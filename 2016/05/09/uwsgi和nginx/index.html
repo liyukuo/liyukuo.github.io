@@ -265,7 +265,7 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2015/05/09/uwsgi和nginx/" itemprop="url">
+	<a href="/2016/05/09/uwsgi和nginx/" itemprop="url">
 		uwsgi和nginx
 	</a>
 
@@ -279,9 +279,9 @@
 
 	发布于
 
-	<a href="/2015/05/09/uwsgi和nginx/" itemprop="url">
-		<time datetime="2015-05-09T05:19:15.000Z" itemprop="datePublished">
-	  		2015-05-09
+	<a href="/2016/05/09/uwsgi和nginx/" itemprop="url">
+		<time datetime="2016-05-09T05:19:15.000Z" itemprop="datePublished">
+	  		2016-05-09
 	  </time>
 	</a>
 	&nbsp;
@@ -297,9 +297,9 @@
 
 	更新于
 
-	<a href="/2015/05/09/uwsgi和nginx/" itemprop="url">
-		<time datetime="2015-05-09T05:19:15.000Z" itemprop="dateUpdated">
-	  		2019-09-10
+	<a href="/2016/05/09/uwsgi和nginx/" itemprop="url">
+		<time datetime="2016-05-09T05:19:15.000Z" itemprop="dateUpdated">
+	  		2019-09-20
 	  </time>
 	</a> 
 
@@ -314,7 +314,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2015/05/09/uwsgi和nginx/_visitors" data-url="/2015/05/09/uwsgi和nginx/" data-title="uwsgi和nginx">
+    <span class="leancloud_visitors" id="/2016/05/09/uwsgi和nginx/_visitors" data-url="/2016/05/09/uwsgi和nginx/" data-title="uwsgi和nginx">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -324,7 +324,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2015/05/09/uwsgi和nginx/_likes" data-url="/2015/05/09/uwsgi和nginx/" data-title="uwsgi和nginx" rel="unlike">
+    <span class="leancloud_likes" id="/2016/05/09/uwsgi和nginx/_likes" data-url="/2016/05/09/uwsgi和nginx/" data-title="uwsgi和nginx" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -334,10 +334,7 @@
 
 	<div class="article-content" id="article-content">
 		<p>正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
-<p>正向代理的用途：</p>
-<p>  （1）访问原来无法访问的资源，如google</p>
-<pre><code>（2） 可以做缓存，加速访问资源</code></pre><p>  （3）对客户端访问授权，上网进行认证</p>
-<p>  （4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</p>
+<p>正向代理的用途：<br>  （1）访问原来无法访问的资源，如google<br>  （2） 可以做缓存，加速访问资源<br>  （3）对客户端访问授权，上网进行认证<br>  （4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</p>
 <p>正向代理:  CCProxy:<br>CCProxy可以完成两项大的功能: 代理共享上网的客户端 代理权限管理<br>只要局域网内有一台机器能够上网,其他机器就可以通过这台机器上安装的CCProxy来共享上网,最大程度的减少了硬件费用和上网费用. 只需要在服务器上的CCProxy里进行账号设置,就可以方便的管理客户端代理上网的权限.在提高员工工作效率和企业信息安全管理方便,CCProxy充当了重要的角色</p>
 <p>反向代理</p>
 <p>  初次接触反向代理的感觉是，客户端是无感知代理的存在的，反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。因为客户端不需要任何配置就可以访问。</p>
@@ -383,7 +380,7 @@
 <p>5.Gunicorn + Nginx +Gevent<br>前面说的几种环境，看似不错，但是作者说了，我们需要追求完美！由于gunicorn 是同步（sync）单线程模型的，有时候不免会发生一些阻塞问题，这时候我们为gunicorn 加上 -k gevent 参数来用gevent 做处理接口，这就比较靠谱的处理了阻塞问题，从作者的测试结果可以得到，这种模式下不仅拥有100% 的处理成功率，而且时间也在很短之内完成，是5组测试数据当中性能最好的！<br>补充一句：原作者好棒！</p>
 <p>uWSGI listen queue 队列溢出的修补措施：<br>1.修改系统参数<br>vim /etc/sysctl.conf<br>在文件最后添加一行记录net.core.somaxcon = 1024<br>执行sysctl -p重新load参数设置，这样会立即生效，并且以后重新启动机器也会生效。<br>2.设置uwsgi启动的–listen 1024.<br>这样 你的机器并发数就可以得到一个很大的提升。</p>
 <p>1 首先nginx 是对外的服务接口，外部浏览器通过url访问nginx,<br>2nginx 接收到浏览器发送过来的http请求，将包进行解析，分析url，如果是静态文件请求就直接访问用户给nginx配置的静态文件目录，直接返回用户请求的静态文件，<br>  如果不是静态文件，而是一个动态的请求，那么nginx就将请求转发给uwsgi,uwsgi 接收到请求之后将包进行处理，处理成wsgi可以接受的格式，并发给wsgi,wsgi 根据请求调用应用程序的某个文件，某个文件的某个函数，最后处理完将返回值再次交给wsgi,wsgi将返回值进行打包，打包成uwsgi能够接收的格式，uwsgi接收wsgi 发送的请求，并转发给nginx,nginx最终将返回值返回给浏览器。<br>3要知道第一级的nginx并不是必须的，uwsgi完全可以完成整个的和浏览器交互的流程，但是要考虑到某些情况<br>  1 安全问题，程序不能直接被浏览器访问到，而是通过nginx,nginx只开放某个接口，uwsgi本身是内网接口，这样运维人员在nginx上加上安全性的限制，可以达到保护程序的作用。<br>  2负载均衡问题，一个uwsgi很可能不够用，即使开了多个work也是不行，毕竟一台机器的cpu和内存都是有限的，有了nginx做代理，一个nginx可以代理多台uwsgi完成uwsgi的负载均衡。<br>  3静态文件问题，用django或是uwsgi这种东西来负责静态文件的处理是很浪费的行为，而且他们本身对文件的处理也不如nginx好，所以整个静态文件的处理都直接由nginx完成，静态文件的访问完全不去经过uwsgi以及其后面的东西。</p>
-<p>uWSGI+Django比单独使用Django的好处：<br>支持的并发量更高<br>方便管理多进程，发挥多核的优势<br>提升性能，因为uwsgi协议比WSGI协议有优势<br>Nginx+uWSGI+Django比uWSGI+Django好处  （参考反向代理的作用）：</p>
+<p>uWSGI+Django比单独使用Django的好处：<br>支持的并发量更高<br>方便管理多进程，发挥多核的优势<br>提升性能，因为uwsgi协议比WSGI协议有优势</p>
 	
 	</div>
 	
