@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel） | LiYukuo
+      RESTful | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）》
+			当前文章&nbsp;:&nbsp;《RESTful》
 		
 	</p>
 
@@ -265,8 +265,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）
+	<a href="/2019/04/09/restful/" itemprop="url">
+		RESTful
 	</a>
 
 	</div>
@@ -279,9 +279,9 @@
 
 	发布于
 
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		<time datetime="2019-08-12T05:18:31.000Z" itemprop="datePublished">
-	  		2019-08-12
+	<a href="/2019/04/09/restful/" itemprop="url">
+		<time datetime="2019-04-09T09:00:28.000Z" itemprop="datePublished">
+	  		2019-04-09
 	  </time>
 	</a>
 	&nbsp;
@@ -297,9 +297,9 @@
 
 	更新于
 
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		<time datetime="2019-08-12T05:18:31.000Z" itemprop="dateUpdated">
-	  		2019-09-09
+	<a href="/2019/04/09/restful/" itemprop="url">
+		<time datetime="2019-04-09T09:00:28.000Z" itemprop="dateUpdated">
+	  		2019-09-20
 	  </time>
 	</a> 
 
@@ -310,8 +310,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Docker/" class=" ">
-			Docker
+		<a href="/tags/RESTful/" class=" ">
+			RESTful
 		</a>
 	
 		
@@ -320,7 +320,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/_visitors" data-url="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" data-title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+    <span class="leancloud_visitors" id="/2019/04/09/restful/_visitors" data-url="/2019/04/09/restful/" data-title="RESTful">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -330,7 +330,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/_likes" data-url="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" data-title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）" rel="unlike">
+    <span class="leancloud_likes" id="/2019/04/09/restful/_likes" data-url="/2019/04/09/restful/" data-title="RESTful" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -339,50 +339,21 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）<br>首页 - Mac &amp; Linux /2019-09-04<br>    我们知道，Redis的集群方案大致有三种：1）redis cluster集群方案；2）master/slave主从方案；3）哨兵模式来进行主从替换以及故障恢复。</p>
-<pre><code>sentinel系统可以监视一个或者多个redis master服务，以及这些master服务的所有从服务；当某个master服务下线时，自动将该master下的某个从服务升级为master服务替代已下线的master服务继续处理请求。</code></pre><p>​    </p>
-<pre><code>同样，我们使用docker进行搭建
+		<pre><code>    RESTful :是一种软件架构风格，或者说是一种设计风格，并不是标准的，它只是提供了一组设计原则和约束条件，主要用于客户端和服务端交互类的软件。
+类似于设计模式，并不是一定要遵循这些原则，而是基于这个风格设计的软件，可以更简洁，有层次，我们根据开发的实际情况作出相应调整。
+RESTful是目前最流行的一种互联网软件架构。它结构清晰、符合标准、易于理解、扩展方便，所以正得到越来越多网站的采用。
 
-新建一个mkdir redis-sentinel文件夹
-
-进入项目文件夹 cd redis-sentinel，再建立一个sentinel专门来存放哨兵脚本，然后cd sentinel
-
-建立sentinel.conf配置文件：</code></pre><p>​    </p>
-<pre><code>sentinel monitor mymaster redis-master 6379 2
-sentinel down-after-milliseconds mymaster 5000
-sentinel parallel-syncs mymaster 1
-sentinel failover-timeout mymaster 5000
-该配置的意思是，监控主服务器的6379端口并且起两个实例，如果哨兵5s内没有收到主节点的心跳，哨兵就认为主节点宕机了，默认是30秒，如果5秒以上连接不上主库同步，则在5秒后进行选举，对其他的从服务器进行角色转换
-
-
-随后，建立sentinel-entrypoint.sh脚本文件：</code></pre><p>​    </p>
-<p>  #!/bin/sh</p>
-<p>  sed -i “s/$SENTINEL_QUORUM/$SENTINEL_QUORUM/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_DOWN_AFTER/$SENTINEL_DOWN_AFTER/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_FAILOVER/$SENTINEL_FAILOVER/g” /etc/redis/sentinel.conf</p>
-<p>  exec docker-entrypoint.sh redis-server /etc/redis/sentinel.conf –sentinel<br>      该脚本文件会对配置文件进行同步，用来启动哨兵</p>
-<pre><code>然后我们来建立Dockerfile指定基础镜像，同时拷贝配置文件到镜像内部：</code></pre><p>​      </p>
-<p>  FROM redis</p>
-<p>  EXPOSE 26379<br>  ADD sentinel.conf /etc/redis/sentinel.conf<br>  RUN chown redis:redis /etc/redis/sentinel.conf<br>  COPY sentinel-entrypoint.sh /usr/local/bin/<br>  RUN chmod +x /usr/local/bin/sentinel-entrypoint.sh<br>  ENTRYPOINT [“sentinel-entrypoint.sh”]<br>      最后退到项目根目录 cd ..</p>
-<pre><code>建立docker-compose.yml配置文件：</code></pre><p>​    </p>
-<p>master:<br>  image: redis<br>  ports:<br>    - “6379:6379”<br>slave1:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6380:6379”<br>slave2:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6381:6379”<br>sentinel1:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave1<br>sentinel2:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave2<br>    意思是，我们起三台redis服务，分别跑在6379,6380,6381 ，一主两从，并且有两个哨兵实例来监控他们，最后项目结构是这样的</p>
-<p>​    </p>
-<pre><code>在项目根目录下，启动服务：</code></pre><p>​    </p>
-<p>docker-compose up –force-recreate<br>    如果希望在后台运行可以加-d参数</p>
-<pre><code>此时我们可以测一下同步是否成功，分别开三个窗口登录到redis,redis-cli -p 6379,redis-cli -p 6380,redis-cli -p 6381
-
-在主库6379中set 123 123，然后分别在从库get 123
-
-    没有问题，现在我们来测一下哨兵模式是否好用，如果主库由于某种原因宕机了，从库是否能自动切换角色
-
-我们可以手动停止主库的容器进程，来模拟宕机的情况</code></pre><p>​    </p>
-<p>docker stop redissentinel_master_1</p>
-<pre><code>此时主库已经连接不上了，我们进入从库，使用info命令来查看从库的角色</code></pre><p>​    </p>
-<pre><code>发现之前6380本来是从库(slave)角色，现在已经变成主库了(master)了
-
-
-其实这就是所谓的高负载高可用架构，在使用集群承担高负载的同时，也能进行高可用的容灾机制。</code></pre>	
+它在这里有一些简单的编写规范：
+    1、restful提倡面向资源变成，在url接口尽量用名词不要用动词。
+    2、在url中可以体现版本号，不同版本可以有不同接口，使其更加简洁、清晰。
+    3、在url 中可以体现是否是API 接口
+    4、响应式应设置状态码。
+    5、有返回值的格式统一为  json格式
+    6、返回错误信息
+    7、返回结果中要提供帮助链接、即API最好做到接口文档。</code></pre>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/609.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -397,12 +368,12 @@ sentinel failover-timeout mymaster 5000
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/12/搜索（二分查找、二叉树）/" title="搜索（二分查找、二叉树）" rel="prev">
+			<a href="/2019/04/12/mongo/" title="mongo" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法" rel="next">
+			<a href="/2019/03/05/Django/" title="Django简介" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -420,30 +391,6 @@ sentinel failover-timeout mymaster 5000
 <div class="relate-post">
 	
 		<ul>
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
-								利用Docker来搭建分布式文件系统FastDfs			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 28日, 2019				
-							</p>
-							<p class="relate-post-content">
-								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
-实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="img/678.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
-							</a>
-						</div>
-					</li>											
-			
 			
 					<li>
 						<div class="relate-post-text">
@@ -520,6 +467,30 @@ sentinel failover-timeout mymaster 5000
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
+								利用Docker来搭建分布式文件系统FastDfs			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
+实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/678.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/08/12/git上传项目/" title="git上传项目">
 								git上传项目			
 							</a>
@@ -565,6 +536,29 @@ sentinel failover-timeout mymaster 5000
 							<a href="/2019/08/12/搜索（二分查找、二叉树）/" title="搜索（二分查找、二叉树）">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="img/667.jpg" alt="搜索（二分查找、二叉树）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）首页 - Mac &amp; Linux /2019-09-04    我们知道，Redis的集群方案大致有三种：1）redis clu...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）"/>
 							</a>
 						</div>
 					</li>											
@@ -640,29 +634,6 @@ step1:第一次握手建立连接时，客户端发送SYN包到服务器，其�
 							<a href="/2019/05/02/三次握手四次挥手详解/" title="三次握手四次挥手详解">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/608.jpg" alt="三次握手四次挥手详解"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务">
-								使用Redisearch实现的全文检索功能服务			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								五月 2日, 2019				
-							</p>
-							<p class="relate-post-content">
-								“检索”是很多产品中无法绕开的一个功能模块，当数据量小的时候可以使用模糊查询等操作凑合一下，但是当面临海量数据和高并发的时候，业界常用 elasticsearch 和 lucene 等方案，但是elasticsearch对运行时内存有...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/05/02/使用Redisearch实现的全文检索功能服务/" title="使用Redisearch实现的全文检索功能服务">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="img/Redis.jpg" alt="使用Redisearch实现的全文检索功能服务"/>
 							</a>
 						</div>
 					</li>											
