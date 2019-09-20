@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
   <title>
     
-      基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel） | LiYukuo
+      Celery | LiYukuo
     
   </title>
   <meta name="author" content="John Doe">
@@ -160,7 +160,7 @@
 	<!-- Page title -->
 	<p>
 		
-			当前文章&nbsp;:&nbsp;《基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）》
+			当前文章&nbsp;:&nbsp;《Celery》
 		
 	</p>
 
@@ -265,8 +265,8 @@
 	<div class="article-title">
 		<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
 		
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）
+	<a href="/2019/05/09/Celery/" itemprop="url">
+		Celery
 	</a>
 
 	</div>
@@ -279,9 +279,9 @@
 
 	发布于
 
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		<time datetime="2019-08-12T05:18:31.000Z" itemprop="datePublished">
-	  		2019-08-12
+	<a href="/2019/05/09/Celery/" itemprop="url">
+		<time datetime="2019-05-09T09:00:28.000Z" itemprop="datePublished">
+	  		2019-05-09
 	  </time>
 	</a>
 	&nbsp;
@@ -297,9 +297,9 @@
 
 	更新于
 
-	<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" itemprop="url">
-		<time datetime="2019-08-12T05:18:31.000Z" itemprop="dateUpdated">
-	  		2019-09-09
+	<a href="/2019/05/09/Celery/" itemprop="url">
+		<time datetime="2019-05-09T09:00:28.000Z" itemprop="dateUpdated">
+	  		2019-09-20
 	  </time>
 	</a> 
 
@@ -310,8 +310,8 @@
 			<i class="fa fa-tags"></i>
 			
 	
-		<a href="/tags/Docker/" class=" ">
-			Docker
+		<a href="/tags/Celery/" class=" ">
+			Celery
 		</a>
 	
 		
@@ -320,7 +320,7 @@
 		
 
 	
-    <span class="leancloud_visitors" id="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/_visitors" data-url="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" data-title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+    <span class="leancloud_visitors" id="/2019/05/09/Celery/_visitors" data-url="/2019/05/09/Celery/" data-title="Celery">
        	<i class="fa fa-eye"></i>
        	热度
         <i class="leancloud_visitors_count" id="leancloud_visitors_count">0</i>
@@ -330,7 +330,7 @@
 
 
 	
-    <span class="leancloud_likes" id="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/_likes" data-url="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" data-title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）" rel="unlike">
+    <span class="leancloud_likes" id="/2019/05/09/Celery/_likes" data-url="/2019/05/09/Celery/" data-title="Celery" rel="unlike">
         <i class="fa fa-heart"></i>
         喜欢
         <i class="leancloud_likes_count" id="leancloud_likes_count">0</i>
@@ -339,50 +339,23 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		<p>基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）<br>首页 - Mac &amp; Linux /2019-09-04<br>    我们知道，Redis的集群方案大致有三种：1）redis cluster集群方案；2）master/slave主从方案；3）哨兵模式来进行主从替换以及故障恢复。</p>
-<pre><code>sentinel系统可以监视一个或者多个redis master服务，以及这些master服务的所有从服务；当某个master服务下线时，自动将该master下的某个从服务升级为master服务替代已下线的master服务继续处理请求。</code></pre><p>​    </p>
-<pre><code>同样，我们使用docker进行搭建
-
-新建一个mkdir redis-sentinel文件夹
-
-进入项目文件夹 cd redis-sentinel，再建立一个sentinel专门来存放哨兵脚本，然后cd sentinel
-
-建立sentinel.conf配置文件：</code></pre><p>​    </p>
-<pre><code>sentinel monitor mymaster redis-master 6379 2
-sentinel down-after-milliseconds mymaster 5000
-sentinel parallel-syncs mymaster 1
-sentinel failover-timeout mymaster 5000
-该配置的意思是，监控主服务器的6379端口并且起两个实例，如果哨兵5s内没有收到主节点的心跳，哨兵就认为主节点宕机了，默认是30秒，如果5秒以上连接不上主库同步，则在5秒后进行选举，对其他的从服务器进行角色转换
+		<pre><code>{% asset_img b8f95326720a4375c69744eeedeadb93.jpg%}
 
 
-随后，建立sentinel-entrypoint.sh脚本文件：</code></pre><p>​    </p>
-<p>  #!/bin/sh</p>
-<p>  sed -i “s/$SENTINEL_QUORUM/$SENTINEL_QUORUM/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_DOWN_AFTER/$SENTINEL_DOWN_AFTER/g” /etc/redis/sentinel.conf<br>  sed -i “s/$SENTINEL_FAILOVER/$SENTINEL_FAILOVER/g” /etc/redis/sentinel.conf</p>
-<p>  exec docker-entrypoint.sh redis-server /etc/redis/sentinel.conf –sentinel<br>      该脚本文件会对配置文件进行同步，用来启动哨兵</p>
-<pre><code>然后我们来建立Dockerfile指定基础镜像，同时拷贝配置文件到镜像内部：</code></pre><p>​      </p>
-<p>  FROM redis</p>
-<p>  EXPOSE 26379<br>  ADD sentinel.conf /etc/redis/sentinel.conf<br>  RUN chown redis:redis /etc/redis/sentinel.conf<br>  COPY sentinel-entrypoint.sh /usr/local/bin/<br>  RUN chmod +x /usr/local/bin/sentinel-entrypoint.sh<br>  ENTRYPOINT [“sentinel-entrypoint.sh”]<br>      最后退到项目根目录 cd ..</p>
-<pre><code>建立docker-compose.yml配置文件：</code></pre><p>​    </p>
-<p>master:<br>  image: redis<br>  ports:<br>    - “6379:6379”<br>slave1:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6380:6379”<br>slave2:<br>  image: redis<br>  command: redis-server –slaveof redis-master 6379<br>  links:<br>    - master:redis-master<br>  ports:<br>    - “6381:6379”<br>sentinel1:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave1<br>sentinel2:<br>  build: sentinel<br>  environment:<br>    - SENTINEL_DOWN_AFTER=5000<br>    - SENTINEL_FAILOVER=5000<br>  links:<br>    - master:redis-master<br>    - slave2<br>    意思是，我们起三台redis服务，分别跑在6379,6380,6381 ，一主两从，并且有两个哨兵实例来监控他们，最后项目结构是这样的</p>
-<p>​    </p>
-<pre><code>在项目根目录下，启动服务：</code></pre><p>​    </p>
-<p>docker-compose up –force-recreate<br>    如果希望在后台运行可以加-d参数</p>
-<pre><code>此时我们可以测一下同步是否成功，分别开三个窗口登录到redis,redis-cli -p 6379,redis-cli -p 6380,redis-cli -p 6381
+Celery 是一个强大的 分布式任务队列 的 异步处理框架，它可以让任务的执行完全脱离主程序，甚至可以被分配到其他主机上运行。我们通常使用它来实现异步任务（async task）和定时任务（crontab）。我们需要一个消息队列来下发我们的任务。首先要有一个消息中间件，此处选择rabbitmq (也可选择 redis 或 Amazon Simple Queue Service(SQS)消息队列服务)。推荐 选择 rabbitmq 。使用RabbitMQ是官方特别推荐的方式，因此我也使用它作为我们的broker。
 
-在主库6379中set 123 123，然后分别在从库get 123
-
-    没有问题，现在我们来测一下哨兵模式是否好用，如果主库由于某种原因宕机了，从库是否能自动切换角色
-
-我们可以手动停止主库的容器进程，来模拟宕机的情况</code></pre><p>​    </p>
-<p>docker stop redissentinel_master_1</p>
-<pre><code>此时主库已经连接不上了，我们进入从库，使用info命令来查看从库的角色</code></pre><p>​    </p>
-<pre><code>发现之前6380本来是从库(slave)角色，现在已经变成主库了(master)了
-
-
-其实这就是所谓的高负载高可用架构，在使用集群承担高负载的同时，也能进行高可用的容灾机制。</code></pre>	
+Celery 主要包含以下几个模块：
+    任务模块 Task
+    包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。
+    消息中间件 Broker
+    Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。
+    任务执行单元 Worker
+    Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。
+    任务结果存储 Backend
+    Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, redis 和 MongoDB 等。</code></pre>	
 	</div>
 	
-	<div id="current-post-cover" data-scr="/img/cart_cover.jpg"></div>
+	<div id="current-post-cover" data-scr="/img/613.jpg"></div>
 
 	<!-- relate post, comment...-->
 	<div class="investment-container">
@@ -397,12 +370,12 @@ sentinel failover-timeout mymaster 5000
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
 		
-			<a href="/2019/08/12/搜索（二分查找、二叉树）/" title="搜索（二分查找、二叉树）" rel="prev">
+			<a href="/2019/05/13/Vue-cli/" title="Vue-cli" rel="prev">
 				&laquo;上一篇
 			</a>
 		
 		
-			<a href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法" rel="next">
+			<a href="/2019/05/02/三次握手四次挥手详解/" title="三次握手四次挥手详解" rel="next">
 				下一篇&raquo;
 			</a>
 			
@@ -420,30 +393,6 @@ sentinel failover-timeout mymaster 5000
 <div class="relate-post">
 	
 		<ul>
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
-								利用Docker来搭建分布式文件系统FastDfs			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								八月 28日, 2019				
-							</p>
-							<p class="relate-post-content">
-								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
-实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="img/678.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
-							</a>
-						</div>
-					</li>											
-			
 			
 					<li>
 						<div class="relate-post-text">
@@ -520,6 +469,30 @@ sentinel failover-timeout mymaster 5000
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">
+								利用Docker来搭建分布式文件系统FastDfs			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 28日, 2019				
+							</p>
+							<p class="relate-post-content">
+								 对于文件存储来说，一般情况下简单的处理就是在Django配置文件中配置存储目录，按照规则对文件进行上传或者下载。
+实际上，当文件较少的时候，Django是可以应付的过来的。但当文件以海量形式出现的时候，Django就并不是那么好用了...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/28/利用Docker来搭建分布式文件系统FastDfs/" title="利用Docker来搭建分布式文件系统FastDfs">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="img/678.jpg" alt="利用Docker来搭建分布式文件系统FastDfs"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/08/12/git上传项目/" title="git上传项目">
 								git上传项目			
 							</a>
@@ -572,6 +545,29 @@ sentinel failover-timeout mymaster 5000
 			
 					<li>
 						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								八月 12日, 2019				
+							</p>
+							<p class="relate-post-content">
+								基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）首页 - Mac &amp; Linux /2019-09-04    我们知道，Redis的集群方案大致有三种：1）redis clu...
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2019/08/12/基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）/" title="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/cart_cover.jpg" alt="基于Docker-compose搭建Redis高可用集群-哨兵模式（Redis-Sentinel）"/>
+							</a>
+						</div>
+					</li>											
+			
+			
+					<li>
+						<div class="relate-post-text">
 							<a class="relate-post-title" href="/2019/06/12/redis数据持久化方法/" title="redis数据持久化的方法">
 								redis数据持久化的方法			
 							</a>
@@ -615,32 +611,6 @@ sentinel failover-timeout mymaster 5000
 							<a href="/2019/05/13/Vue-cli/" title="Vue-cli">				
 								
 								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/timg (1).jpg" alt="Vue-cli"/>
-							</a>
-						</div>
-					</li>											
-			
-			
-					<li>
-						<div class="relate-post-text">
-							<a class="relate-post-title" href="/2019/05/09/Celery/" title="Celery">
-								Celery			
-							</a>
-							<p class="relate-post-date">
-								<i class="fa fa-calendar"></i>
-								五月 9日, 2019				
-							</p>
-							<p class="relate-post-content">
-								{% asset_img b8f95326720a4375c69744eeedeadb93.jpg%}
-
-
-Celery 是一个强大的 分布式任务队列 的 异步处理框架，它可以让任务的执行完全脱离主程序，甚至可以被分配到其他主机上运行...
-							</p>
-						</div>
-
-						<div class="relate-post-cover">
-							<a href="/2019/05/09/Celery/" title="Celery">				
-								
-								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/613.jpg" alt="Celery"/>
 							</a>
 						</div>
 					</li>											
